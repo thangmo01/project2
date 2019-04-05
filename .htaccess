@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    #https://serverfault.com/questions/810202/what-does-ifmodule-do-in-htaccess
+    RewriteEngine On
+    RewriteRule ^$ public/ [L]
+    #noting
+    RewriteRule (.*) public/$1 [L]
+    #group url by () and send it via $1
+    #https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewriterule
+    #https://httpd.apache.org/docs/2.4/rewrite/flags.html#flag_l
+</IfModule>

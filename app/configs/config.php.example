@@ -1,0 +1,9 @@
+<?php
+    define('DB_HOST', '');
+    define('DB_USER', '');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', '');
+
+    define('APPROOT', dirname(dirname(__FILE__)));
+    define('URLROOT', 'http://localhost/project2');
+    define('SITENAME', 'Project2');

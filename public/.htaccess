@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    #RewriteBase /project2/public
+    RewriteCond %{REQUEST_FILENAME} !-d
+    #REQUEST_FILENAME -> full local filesystem path matching the request determined by the server
+    #Is not equal directory
+    RewriteCond %{REQUEST_FILENAME} !-f
+    #https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewritecond
+    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+    #https://httpd.apache.org/docs/2.4/rewrite/flags.html#flag_qsa
+</IfModule>
