@@ -6,4 +6,3 @@
     });
     //https://www.php.net/manual/en/intro.spl.php
     //https://www.php.net/manual/en/function.spl-autoload-register.php
-    echo 'hello';
