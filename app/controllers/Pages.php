@@ -11,7 +11,7 @@ class Pages extends Controller
     {
         $data = [
             'title' => 'Project2',
-            'description' => 'face recognition'
+            'description' => '555'
         ];
         $this->view('pages/index', $data);
     }
