@@ -12,4 +12,5 @@
 			<input type="submit" value="Upload Image" name="submit">
 		</form>
    </div>
+   <a href="<?php echo URLROOT . '/student/main';?>">main</a>
 <?php require APPROOT . '/views/common/footer.php'; ?>
