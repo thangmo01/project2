@@ -7,4 +7,7 @@
 		public function main() {
 			$this->view('students/main');
 		}
+		public function room(){
+			$this->view('students/room');
+		}
 	}
