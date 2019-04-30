@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <title>auth</title>
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
-    <script>
-        var config = {
-            apiKey: "AIzaSyCRL8xcJoK7jj3r6s7OtdCiZz5djGuKjyo",
-            authDomain: "check-name-c3dae.firebaseapp.com",
-            databaseURL: "https://check-name-c3dae.firebaseio.com",
-            projectId: "check-name-c3dae",
-            storageBucket: "check-name-c3dae.appspot.com",
-            messagingSenderId: "279764457881"
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCRL8xcJoK7jj3r6s7OtdCiZz5djGuKjyo",
+    authDomain: "check-name-c3dae.firebaseapp.com",
+    databaseURL: "https://check-name-c3dae.firebaseio.com",
+    projectId: "check-name-c3dae",
+    storageBucket: "check-name-c3dae.appspot.com",
+    messagingSenderId: "279764457881"
         };
         firebase.initializeApp(config);
         var provider = new firebase.auth.GoogleAuthProvider();
@@ -28,6 +29,6 @@
     </script>
 </head>
 <body>
-    <button onclick="onSignInButtonClick()">Login</button>
+    <button SignInBuonclick="onttonClick()">Login</button>
 </body>
 </html>
