@@ -4,5 +4,10 @@
     <h4><?php echo $data['description'];?></h4>
     <a href="<?php echo URLROOT. '/check' ;?>">check</a>
     <a href="<?php echo URLROOT . '/student/main';?>">student</a>
+    <br>
+    <?php 
+        $authUrl = getGClient()->createAuthUrl();
+        echo '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'">LOGIN</a>';
+    ?>
 </div>
 <?php require APPROOT . '/views/common/footer.php'; ?>
