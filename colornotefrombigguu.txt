@@ -1,4 +1,4 @@
-Coverpicture = https://drive.google.com/file/d/1HCf5Pd7eqM4rgxPQIwYRuEVcw4TdM5CF/view?usp=sharing
+Coverpicture(openweb embedded) = https://drive.google.com/file/d/1HCf5Pd7eqM4rgxPQIwYRuEVcw4TdM5CF/view?usp=sharing
 
    main color
 #concept night@city
