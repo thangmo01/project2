@@ -18,6 +18,7 @@ class Pages extends Controller
         if(isset($_SESSION['access_token']) && !empty($_SESSION['access_token'])) {
             $user = getUserProfileInfo($_SESSION['access_token']);
             $email = $user['email'];
+            $student_code = substr($email,0,8);
             $name = $user['given_name'];
             $surname = $user['family_name'];
             $id = $user['id'];
@@ -27,10 +28,10 @@ class Pages extends Controller
             }
             else {
                     if(type($email)=='student') {
-                        $this->create_model->Student_Add($id,$name,$surname,2);
+                        $this->create_model->Student_Add($id,$name,$surname,2,$student_code);
                     }
                     elseif (type($email)=='teacher') {
-                        $this->create_model->Teach_Add($id,$name,$surname,1)
+                        $this->create_model->Teach_Add($id,$name,$surname,1);
                     }
                     else {
                         $this->view('pages/index', $this->data);
