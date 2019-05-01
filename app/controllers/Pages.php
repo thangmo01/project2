@@ -30,7 +30,7 @@ class Pages extends Controller
                         $this->create_model->Student_Add($id,$name,$surname,2);
                     }
                     elseif (type($email)=='teacher') {
-                        $this->create_model->Teach_Add($id,$name,$surname,1)
+                        $this->create_model->Teach_Add($id,$name,$surname,1);
                     }
                     else {
                         $this->view('pages/index', $this->data);

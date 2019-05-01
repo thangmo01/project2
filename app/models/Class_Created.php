@@ -5,7 +5,7 @@
             $this->db = new Database();
 
         }
-        public function Class_Create($teach_id,$subject_name,$year,$semester,$sec)
+        public function Class_Created($teach_id,$subject_name,$year,$semester,$sec)
         {
             $this->db->query('SELECT id FROM subjects WHERE name = :subject_name');
             $this->db->bind(':subject_name',$subject_name);
