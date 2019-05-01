@@ -9,7 +9,7 @@
         {
             $this->db->query('SELECT id FROM subjects WHERE name = :subject_name');
             $this->db->bind(':subject_name',$subject_name);
-            $subject_id=$this->db->fetchAll();;
+            $subject_id=$this->db->fetchAll();
             $this->db->query('SELECT * FROM semasters WHERE academic_year = :year and semaster = :semester');
             $this->db->bind(':academic_year',$year);
             $this->db->bind(':semester',$semester);
