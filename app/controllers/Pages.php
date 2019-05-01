@@ -17,17 +17,23 @@ class Pages extends Controller
     {
         if(isset($_SESSION['access_token']) && !empty($_SESSION['access_token'])) {
             $user = getUserProfileInfo($_SESSION['access_token']);
-            print_r($user);
             $email = $user['email'];
             $name = $user['given_name'];
             $surname = $user['family_name'];
+            $id = $user['id'];
             if(!isKmitlEmail($email)) {
                 $this->data['error'] = 'ใช้ e-mail สถาบัน';
                 $this->view('pages/index', $this->data);
             }
             else {
                     if(type($email)=='student') {
-                        $this->create_model->Student_Add($class_id,$semester,$sec,$teach_id);
+                        $this->create_model->Student_Add($id,$name,$surname,2);
+                    }
+                    elseif (type($email)=='teacher') {
+                        $this->create_model->Teach_Add($id,$name,$surname,1)
+                    }
+                    else {
+                        $this->view('pages/index', $this->data);
                     }
             }
         }
