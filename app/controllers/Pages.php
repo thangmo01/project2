@@ -17,8 +17,10 @@ class Pages extends Controller
             $user = getUserProfileInfo($_SESSION['access_token']);
             // print_r($user);
             $email = $user['email'];
+            $student_code = substr($email,0,8);
             $name = $user['given_name'];
             $surname = $user['family_name'];
+            $id = $user['id'];
             if(!isKmitlEmail($email)) {
                 $this->data['error'] = 'ใช้ e-mail สถาบัน';
                 $this->view('pages/index', $this->data);
@@ -29,9 +31,11 @@ class Pages extends Controller
                 $_SESSION['user_name'] = 'name';
                 switch (type($email)) {
                     case 'student':
+                        $this->create_model->Student_Add($id,$name,$surname,2,$student_code);
                         redirect('student/index');
                         break;
                     case 'teacher':
+                        $this->create_model->Teach_Add($id,$name,$surname,1);
                         redirect('teacher/index');
                         break;
                 }
