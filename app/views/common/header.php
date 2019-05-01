@@ -12,3 +12,4 @@
     <title><?php echo SITENAME;?></title>
 </head>
 <body>
+<a href="<?php echo URLROOT;?>">home</a>
