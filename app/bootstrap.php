@@ -3,7 +3,11 @@
     
     require_once 'configs/config.php';
     
-    require_once 'helpers/google_auth.php';
+    require_once 'helpers/session_helper.php';
+    require_once 'helpers/google_auth_helper.php';
+    require_once 'helpers/url_helper.php';
+    require_once 'helpers/check_email_helper.php';
+    require_once 'helpers/user_helper.php';
 
     spl_autoload_register(function ($classname) {
         require_once 'libs/' . $classname . '.php';

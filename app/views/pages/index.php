@@ -9,5 +9,6 @@
         $authUrl = getGClient()->createAuthUrl();
         echo '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'">LOGIN</a>';
     ?>
+    <?php echo isset($data['error']) ? '<h2>' .$data['error'] . '<h2>' : '';?>
 </div>
 <?php require APPROOT . '/views/common/footer.php'; ?>
