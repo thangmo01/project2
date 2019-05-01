@@ -1,15 +1,15 @@
 <?php
 	class Student extends Controller {
 		public function check() {
-			$this->view('students/check');
+			$this->view('student/check');
 		}
 
-		public function main() {
-			$this->view('students/main');
+		public function index() {
+			$this->view('student/index');
 		}
 
 		public function editProfile() {
-			$this->view('students/edit_profile');
+			$this->view('student/edit_profile');
 		}
 
 		public function uploadImage() {
@@ -43,7 +43,10 @@
 							'Bucket'=>$bucket_name,
 							'Key' =>  $key_name,
 							'SourceFile' => $file,
-							'StorageClass' => 'REDUCED_REDUNDANCY'
+							'StorageClass' => 'STANDARD',
+							'Metadata' => [
+								'Content-Type' => 'image/jpeg'
+							]
 							// https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html
 						)
 					);

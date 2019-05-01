@@ -13,3 +13,11 @@
 </head>
 <body>
 <a href="<?php echo URLROOT;?>">home</a>
+<?php if(isLoggedIn()) : ?>
+    <a href="<?php echo URLROOT . '/pages/logout';?>">logout</a>
+<?php else : ?>
+    <?php
+        $authUrl = getGClient()->createAuthUrl();
+        echo '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'">login</a>';
+    ?>
+<?php endif; ?>

@@ -4,7 +4,9 @@
     }
 
     function type($email) {
-        if(preg_match("/^[0-9]{8}@kmitl.ac.th$/", $email)) {
+        if(preg_match("/^[0-9]{8}@kmitl.ac.th$/", $email) 
+            && !preg_match("/^60010890@kmitl.ac.th$/", $email)
+        ) {
             return 'student';
         }
         elseif(preg_match("/^.+@kmitl.ac.th$/", $email)) {
