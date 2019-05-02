@@ -14,12 +14,13 @@
     <title><?php echo SITENAME;?></title>
 </head>
 <body>
-<a href="<?php echo URLROOT;?>">home</a>
+<a href="<?php echo URLROOT;?>" class="buttonblue">Home</a>
 <?php if(isLoggedIn()) : ?>
-    <a href="<?php echo URLROOT . '/pages/logout';?>">logout</a>
+    <a href="<?php echo URLROOT . '/pages/logout';?>" class="buttonred">Logout</a>
 <?php else : ?>
     <?php
         $authUrl = getGClient()->createAuthUrl();
-        echo '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'">login</a>';
+        echo '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'" class="buttonblue" >Login</a>';
+        
     ?>
 <?php endif; ?>
