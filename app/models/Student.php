@@ -11,4 +11,12 @@
             $db->bind(':user_id', $user_id);
             $db->execute();
         }
+
+        public function getProfile($user_id) {
+            $db = new Database();
+            $db->query('SELECT image_link, image_key FROM user_students WHERE user_id = :user_id');
+            $db->bind(':user_id', $user_id);
+
+            return $db->fetchOne();
+        }
     }

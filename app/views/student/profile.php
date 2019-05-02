@@ -1,4 +1,8 @@
 <?php require APPROOT . '/views/common/header.php'; ?>
+    <br>
+    <h4>name : <?php echo $data['name'];?></h4>
+    <h4>student id: <?php echo $data['student_id'];?></h4>
+    <img src="<?php echo $data['image_link'];?>" alt="i" width=100 height=100>
     <h1>upload image</h1>
     <form action="<?php echo URLROOT . '/students/uploadImage';?>" method="post" enctype="multipart/form-data">
         <input type="file" name="profile_image" id="profile_image"><br>

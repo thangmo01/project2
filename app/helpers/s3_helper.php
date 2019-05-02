@@ -1,5 +1,5 @@
 <?php 
-    function s3UploadStudentImage($tmp_file_path) {
+    function s3UploadStudentImage($tmp_file_path, $tmp_file_name) {
         $bucket_name = 'project2-face-recognition.bucket02';
         // Connect to AWS
         try {
@@ -20,7 +20,7 @@
         // Add it to S3
         try {
             // Uploaded:
-            $key = "image/student/{$tmp_file_path}";
+            $key = "image/student/{$tmp_file_name}";
             $result = $s3->putObject(
                 array(
                     'Bucket'=> $bucket_name,
