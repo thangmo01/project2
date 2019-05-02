@@ -8,10 +8,10 @@
             if(isLoggedIn()) {
                 switch ($_SESSION[user_type]) {
                     case 'student':
-                        redirect('student/index');
+                        redirect('students/index');
                         break;
                     case 'teacher':
-                        redirect('teacher/index');
+                        redirect('teachers/index');
                         break;
                 }
             }
