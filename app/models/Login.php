@@ -31,7 +31,7 @@ class Login
     
     }
 
-    public function Teach_Add($id,$name,$surname,$type,)
+    public function Teach_Add($id,$name,$surname,$type)
     {
         $this->db->query('SELECT * FROM users WHERE outh_uid = :id');
         $this->db->bind(':id',$id);
