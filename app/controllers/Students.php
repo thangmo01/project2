@@ -21,7 +21,8 @@
 		}
 
 		public function uploadImage() {
-			$profile_image = $_FILES['profile_image'];		
+			$profile_image = $_FILES['profile_image'];
+			
 			if($profile_image['error'] == 0) {
 				// File details.
 				$name = $profile_image['name']; 
