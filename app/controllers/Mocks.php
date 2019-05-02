@@ -5,7 +5,7 @@ class Mocks extends Controller
 {
     public function __construct()
     {
-        $this->mockdata_model = $this->model('Mock');
+        // $this->mockdata_model = $this->model('Mock');
     }
 
     public function index()
@@ -14,14 +14,14 @@ class Mocks extends Controller
             'title' => 'Project2',
             'description' => '555'
         ];
-        $this->view('mocks/index', $data);
+        // $this->view('mocks/index', $data);
     }
 
     public function mockStudents() {
-        $this->mockdata_model->mockStudents();
+        // $this->mockdata_model->mockStudents();
     }
 
     public function mockClassStudets() {
-        $this->mockdata_model->mockClassStudets();
+        // $this->mockdata_model->mockClassStudets();
     }
 }

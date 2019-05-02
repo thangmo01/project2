@@ -1,11 +1,15 @@
 <?php
 	class Student extends Controller {
-		public function check() {
-			$this->view('student/check');
+		public function __construct() {
+			checkLoggedIn('student');
 		}
 
 		public function index() {
 			$this->view('student/index');
+		}
+
+		public function check() {
+			$this->view('student/check');
 		}
 
 		public function editProfile() {

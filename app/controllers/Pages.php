@@ -8,7 +8,7 @@ class Pages extends Controller
 
     public function __construct()
     {
-        // checkLoggedIn();
+        checkLoggedIn();
         $this->create_model = $this->model('Login');
     }
 
@@ -41,7 +41,7 @@ class Pages extends Controller
                         break;
                     case 'teacher':
                         $user_session[user_id] = $this->create_model->Teach_Add($outh_uid, $first_name, $last_name, 1);
-                        $user_session[user_type] = 'student';
+                        $user_session[user_type] = 'teacher';
                         createUserSession($user_session);
                         redirect('teacher/index');
                         break;
