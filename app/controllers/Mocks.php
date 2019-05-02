@@ -18,6 +18,7 @@ class Mocks extends Controller
     }
 
     public function mockStudents() {
+        
         $this->mockdata_model->mockStudents();
     }
 
