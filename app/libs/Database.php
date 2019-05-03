@@ -68,5 +68,13 @@
             }
             $this->stmt->bindValue($param, $value, $type);
         }
+
+        public function rowCount() {
+            return $this->stmt->rowCount();
+        }
+
+        public function lastInsertId() {
+            return $this->pdo->lastInsertId();
+        }
     }
     

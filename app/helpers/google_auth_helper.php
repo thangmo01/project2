@@ -8,7 +8,9 @@
         $gClient->setRedirectUri(GOOGLE_REDIRECT_URL);
         $gClient->addScope(['profile', 'email', 'openid']);
         // https://developers.google.com/identity/protocols/googlescopes
-    
+        $guzzleClient = new \GuzzleHttp\Client(array( 'curl' => array( CURLOPT_SSL_VERIFYPEER => false, ), ));
+        $gClient->setHttpClient($guzzleClient);
+        
         return $gClient;
     }
 

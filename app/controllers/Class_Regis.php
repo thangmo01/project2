@@ -11,6 +11,6 @@ class Class_Regis extends Controller
     {
         $key = $_POST['key'];
         $student_id = $_SESSION['user_id'];
-        $this->create_model->Class_Register($student_id,$key);
+        $this->create_model->Class_Register($user_id,$key);
     }
 }

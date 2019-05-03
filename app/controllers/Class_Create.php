@@ -8,10 +8,11 @@ class Class_Create extends Controllers
     }
 
     public function Class_Create() {
-        $class_id = $_POST['class_id'];
+        $subject_name = $_POST['subject_name'];
+        $year = $_POST['year'];
         $semester = $_POST['semester'];
-        $teach_id = $_SESSION['user_id'];
+        $teach_id = $_SESSION['teacher_id'];
         $sec = $_POST['sec'];
-        $this->create_model->Class_Create($class_id,$semester,$sec,$teach_id);
+        $this->create_model->Class_Created($teach_id,$subject_name,$year,$semester,$sec);
     }
 }

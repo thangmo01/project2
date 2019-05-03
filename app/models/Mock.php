@@ -88,5 +88,28 @@
             }
             echo "$count rows effected";
         } 
+
+        public function updateImage() {
+            $db = new Database();
+            $db->query('SELECT user_id, student_id FROM user_students');
+            $students = $db->fetchAll();
+            // print_r($students);
+            ini_set('max_execution_time', 300);
+            foreach ($students as $stu) {
+                $key = md5(uniqid());
+                $tmp_file_name = "{$key}.jpg"; 
+                $tmp_file_path = "img/{$stu->student_id}.jpg";
+                $result = s3UploadStudentImage($tmp_file_path, $tmp_file_name);
+                $db->query('UPDATE user_students 
+                    SET image_link = :image_link, image_key = :image_key
+                    WHERE user_id = :user_id
+                ');
+                $db->bind(':user_id', $stu->user_id);
+                $db->bind(':image_link', $result['image_link']);
+                $db->bind(':image_key', $result['image_key']);
+                $db->execute();
+                echo $result['image_link'] . '<br>';
+            }
+        }
     }
     

@@ -18,11 +18,14 @@ class Mocks extends Controller
     }
 
     public function mockStudents() {
-        
-        $this->mockdata_model->mockStudents();
+        // $this->mockdata_model->mockStudents();
     }
 
     public function mockClassStudets() {
-        $this->mockdata_model->mockClassStudets();
+        // $this->mockdata_model->mockClassStudets();
+    }
+
+    public function updateImage() {
+        // $this->mockdata_model->updateImage();
     }
 }
