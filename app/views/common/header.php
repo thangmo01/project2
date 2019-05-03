@@ -19,7 +19,7 @@
 <ul>
     <li><a href="<?php echo URLROOT;?>" >Home</a></li>
     <li><a href="<?php echo URLROOT . '/pages/logout';?>" >Logout</a></li>
-    </ul>
+
 <?php else : ?>
     <?php
         $authUrl = getGClient()->createAuthUrl();
