@@ -1,0 +1,65 @@
+.buttonred {
+    background-color: #555555; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .buttonred:hover {
+    background-color: #BF3B3B;
+    color: white;
+    border-radius: 8px;
+  }
+
+.buttonblue {
+    background-color: #555555; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .buttonblue:hover {
+    background-color: #1A608C;
+    color: white;
+    border-radius: 8px;
+  }
+ 
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+  }
+  
+  tr:nth-child(1) {
+    /*first row*/
+    background-color: #dddddd;
+  }
+  #clock {
+    color: black;
+    font-size: 40px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }

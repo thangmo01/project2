@@ -37,13 +37,13 @@ class Pages extends Controller
                         $user_session[user_type] = 'student';
                         $user_session[student_id] = $student_id;
                         createUserSession($user_session);
-                        redirect('student/index');
+                        redirect('students/index');
                         break;
                     case 'teacher':
                         $user_session[user_id] = $this->create_model->Teach_Add($outh_uid, $first_name, $last_name, 1);
                         $user_session[user_type] = 'teacher';
                         createUserSession($user_session);
-                        redirect('teacher/index');
+                        redirect('teachers/index');
                         break;
                 }
             }
