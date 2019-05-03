@@ -1,5 +1,7 @@
-<?php require APPROOT . '/views/common/header.php'; ?>
-    <h1>teacher</h1>
+<?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul>
+<div style="padding:20px; margin-top:30px;">   
+<h1>teacher</h1>
+</div>
 <!--    <?php
         foreach ($data as $sub) {
             // print_r($sub);echo '<br>';
@@ -8,9 +10,6 @@
         }
     ?>
 -->    
-
-<div id="clock"></div>
-
 <?php    /*table*/
     echo"<table>";
         echo"<tr align = center>"; //head table
