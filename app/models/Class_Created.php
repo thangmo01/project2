@@ -43,7 +43,7 @@
                 $this->db->query('SELECT * FROM classes WHERE secret = :key');
                 $this->db->bind(':key',$key);
                 $nrow = $db->execute();
-            }while ($nrow=>1);
+            }while ($nrow>=1);
             return $key;
         }
     }
