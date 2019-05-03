@@ -33,7 +33,7 @@
 				$extension = strtolower(end($extension));
 
 				// check file extension
-				if(preg_match('/^jpg$|^gif$|^png$/', $extension)) {
+				if(preg_match('/^jpg$|^png$/', $extension)) {
 					// check size < 1MB
 					if($size < 1000000) {
 						// Temp details
@@ -47,20 +47,20 @@
 						$result = s3UploadStudentImage($tmp_file_path, $tmp_file_name);
 						if($result) {
 							$this->student_model->updateImage($_SESSION[user_id], $result['image_link'], $result['image_key']);
-							$this->data['message'] = 'done';
+							$this->data['message'] = 'Upload done.';
 						}
 						else {
-							$this->data['error'] ='try agian!';
+							$this->data['error'] ='The image must be less than 1MB in size and must be of JPEG or PNG format.';
 						}
 
 						unlink($tmp_file_path);
 					}
 					else {
-						$this->data['error'] = 'size > 1MB!';
+						$this->data['error'] = 'The image must be less than 1MB in size and must be of JPEG or PNG format.';
 					}
 				}
 				else {
-					$this->data['error'] = 'jpeg, gif, png!';
+					$this->data['error'] = 'The image must be less than 1MB in size and must be of JPEG or PNG format.';
 				}
 			}
 			else {
