@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/common/header.php'; ?>
+<?php require APPROOT . '/views/common/header.php'; ?></ul>
     <h1>teacher</h1>
 <!--    <?php
         foreach ($data as $sub) {

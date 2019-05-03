@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/common/header.php'; ?>
-    <h1>student</h1>
-    <a href="<?php echo URLROOT . '/students/profile';?>" class="buttonblue">profile</a>
+<li><a href="<?php echo URLROOT . '/students/profile';?>" >Profile</a></li></ul>    
+<h1>student</h1>
+
 <?php require APPROOT . '/views/common/footer.php'; ?>
