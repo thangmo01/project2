@@ -1,5 +1,7 @@
 <?php require APPROOT . '/views/common/header.php'; ?></ul>
-    <h1>teacher</h1>
+<div style="padding:20px; margin-top:30px;">   
+<h1>teacher</h1>
+</div>
 <!--    <?php
         foreach ($data as $sub) {
             // print_r($sub);echo '<br>';
