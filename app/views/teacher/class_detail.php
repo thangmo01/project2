@@ -1,10 +1,12 @@
 <?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul>
-        <h1><center>
+<div style="padding:20px; margin-top:30px;">   
+<h1>teacher</h1>
+</div>        
+<h1><center>
         <?php   
             echo "Class : ".$data['class_id']."<br>";        
         ?>
         </center></h1>
-    <div id="clock"></div>
 
 <?php    /*table*/
     echo"<table>";
