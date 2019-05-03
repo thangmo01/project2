@@ -1,7 +1,12 @@
 <?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul>
+<style>
+    h2{ margin-left: 25%;    }
+</style>
+
 <div style="padding:20px; margin-top:30px;">   
-<h1>teacher</h1>
+    <h1>Teacher Page</h1>
 </div>
+
 <!--    <?php
         foreach ($data as $sub) {
             // print_r($sub);echo '<br>';
@@ -10,10 +15,11 @@
         }
     ?>
 -->    
-<?php    /*table*/
+<h2>Class Total : </h2>
+<?php   /*table*/
     echo"<table>";
         echo"<tr align = center>"; //head table
-            echo "<th width=18%>Order</th>";
+            echo "<th width=18%>Subject ID</th>";
             echo "<th width=50%>Subject</th>";
             echo "<th width=12%>Student</th>";
             echo "<th width=20%>Key</th>";
@@ -21,7 +27,7 @@
         foreach($data as $sub )
         {
             echo"<tr align = center>";  //data  
-                echo "<td>".$sub['class_id']."</td>";
+                echo "<td>".$sub['subject_id']."</td>";
                 echo "<td align=left><a href=' " . URLROOT . "/teachers/classDetail/".$sub['subject_name']. " '>".$sub['subject_name']."</td>";
                 echo "<td>".$sub['student_count']."</td>";
                 echo "<td>".$sub['class_key']."</td>";
