@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/common/header.php'; ?></ul>
+<?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul>
 <div style="padding:20px; margin-top:30px;">   
 <h1>teacher</h1>
 </div>
@@ -10,9 +10,6 @@
         }
     ?>
 -->    
-
-<div id="clock"></div>
-
 <?php    /*table*/
     echo"<table>";
         echo"<tr align = center>"; //head table

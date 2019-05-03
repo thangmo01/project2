@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/common/header.php'; ?>
+<?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul>
         <h1><center>
         <?php   
             echo "Class : ".$data['class_id']."<br>";        
