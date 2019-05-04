@@ -25,7 +25,8 @@ class Pages extends Controller
             else {
                 $user_session = [
                     user_email => $email,
-                    user_name => $first_name . ' ' . $last_name
+                    user_name => $first_name . ' ' . $last_name,
+                    user_outh_id => $outh_uid
                 ];
                 switch (type($email)) {
                     case 'student':
@@ -66,6 +67,7 @@ class Pages extends Controller
     public function logout(){
         unset($_SESSION[google_access_token]);
         unset($_SESSION[user_id]);
+        unset($_SESSION[user_outh_id]);
         unset($_SESSION[user_email]);
         unset($_SESSION[user_type]);
         unset($_SESSION[student_id]);

@@ -15,7 +15,6 @@
     <div>
         <h4 style="color: green"><?php echo isset($data['message']) ? $data['message'] : '';?></h4>
         <h5 style="color: red"><?php echo isset($data['error']) ? $data['error'] : '';?></h5>
-        <?php if(isset($data['result'])) print_r($data['result']);?>
     </div>
     <?php sessionShowMessage(student_upload_image); ?>
 <script>        

@@ -23,32 +23,28 @@
 			if(isset($_FILES['profile_image'])) {
 				$profile_image = $_FILES['profile_image'];
 				if($profile_image['error'] == 0) {
-					// File details.
-					$name = $profile_image['name']; 
-					$tmp_name = $profile_image['tmp_name'];
-					$size = $profile_image['size'];
-	
-					$extension = explode('.', $name);
+					$extension = explode('.', $profile_image['name']);
 					$extension = strtolower(end($extension));
 					// check file extension
 					if(preg_match('/^jpg$|^png$/', $extension)) {
 						// check size < 1MB
-						if($size < 1000000) {
-							$result = s3UploadStudentImage($tmp_name, $extension);
-							if($result) {
+						if($profile_image['size'] < 1000000) {
+							$res = face_api_upload_student_image($profile_image, $_SESSION[user_outh_id]);
+							if($res['code'] == 200) {
+								$result = $res['result'];
 								$this->student_model->updateImage($_SESSION[user_id], $result['image_link'], $result['image_key']);
 								sessionSetMessage(student_upload_image, 'Upload done.');
 							}
 							else {
-								sessionSetMessage(student_upload_image, 'The image must be less than 1MB in size and must be of JPEG or PNG format.', 'danger');
+								sessionSetMessage(student_upload_image, $res['messages'] , 'danger');
 							}
 						}
 						else {
-							sessionSetMessage(student_upload_image, 'The image must be less than 1MB in size and must be of JPEG or PNG format.', 'danger');
+							sessionSetMessage(student_upload_image, 'The image must be less than 1MB in size.', 'danger');
 						}
 					}
 					else {
-						sessionSetMessage(student_upload_image, 'The image must be less than 1MB in size and must be of JPEG or PNG format.', 'danger');
+						sessionSetMessage(student_upload_image, 'The image must be of JPEG or PNG format.', 'danger');
 					}
 				}
 				else {
