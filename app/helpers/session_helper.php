@@ -5,6 +5,7 @@
 
     define('google_access_token', 'google_access_token');
     define('user_id', 'user_id');
+    define('user_outh_id', 'user_outh_id');
     define('user_email', 'user_email');
     define('user_name', 'user_name');
     define('user_type', 'user_type');
@@ -33,4 +34,8 @@
             echo "<h4>{$_SESSION[$var]['message']}</h4>";
             echo '</div>';
         }
+    }
+
+    function sessionUnsetMession($var) {
+        unset($_SESSION[$var]);
     }
