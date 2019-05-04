@@ -3,7 +3,7 @@
     <h1>Teacher Page</h1>
 </div>
 
-<h2>Class Total : </h2>
+<h2 style="margin-left:10%;">Class Total : </h2>
 <?php   /*table*/
 //print_r($data);
     echo"<table>";
