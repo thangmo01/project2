@@ -34,8 +34,6 @@
                         $this->db->query('SELECT img_link FROM user_students WHERE user_id = :user_id');
                         $this->db->bind(':user_id', $value->id);
                         $student = $this->db->fetchAll();
-                        print_r($student);
-                        echo '<br>';
                     }
                     else {
                         $this->db->query('SELECT id FROM users WHERE outh_uid = :outh_uid');
@@ -93,7 +91,6 @@
             $db = new Database();
             $db->query('SELECT user_id, student_id FROM user_students');
             $students = $db->fetchAll();
-            // print_r($students);
             ini_set('max_execution_time', 300);
             foreach ($students as $stu) {
                 $key = md5(uniqid());

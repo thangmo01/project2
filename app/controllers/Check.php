@@ -1,5 +1,9 @@
 <?php
     class Check extends Controller {
+        public function __construct() {
+            // checkLoggedIn();
+        }
+
         public function index()
         {
             $this->view('check/index');
@@ -7,6 +11,8 @@
 
         public function imageCheck()
         {
+            
+            /*
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 ini_set('max_execution_time', 300);
                 // https://tecadmin.net/post-json-data-php-curl/
@@ -35,6 +41,6 @@
             } else {
                 echo "Nothing to Show";
             }
-
+            */
         }
     }
