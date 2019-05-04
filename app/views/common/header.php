@@ -13,14 +13,25 @@
     
     <title><?php echo SITENAME;?></title>
 </head>
+<style>
+    .header{
+        width: 100%;
+        height: 54px;
+    }
+</style>
 <body>
-<a href="<?php echo URLROOT;?>" class="buttonblue">Home</a>
-<?php if(isLoggedIn()) : ?>
-    <a href="<?php echo URLROOT . '/pages/logout';?>" class="buttonred">Logout</a>
-<?php else : ?>
-    <?php
+<div class="header">
+    <?php if(isLoggedIn()) : ?>
+    <ul>
+        <li><a href="<?php echo URLROOT;?>" class="buttonblue" >Home</a></li>
+        <li><a href="<?php echo URLROOT . '/pages/logout';?>" class="buttonblue" >Logout</a></li>
+    <ul>
+    <?php else : 
         $authUrl = getGClient()->createAuthUrl();
-        echo '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'" class="buttonblue" >Login</a>';
-        
+        echo '<ul>';
+        echo    '<li><a href="' . URLROOT . '" class="buttonblue">Home</a></li>';
+        echo    '<li><a href="' . filter_var($authUrl, FILTER_SANITIZE_URL) . '" class="buttonblue">Login</a></li>';
+        echo '<ul>';
     ?>
-<?php endif; ?>
+    <?php endif; ?>
+</div>

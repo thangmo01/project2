@@ -9,6 +9,7 @@
     require_once 'helpers/check_email_helper.php';
     require_once 'helpers/user_helper.php';
     require_once 'helpers/s3_helper.php';
+    require_once 'helpers/face_api_helper.php';
 
     spl_autoload_register(function ($classname) {
         require_once 'libs/' . $classname . '.php';

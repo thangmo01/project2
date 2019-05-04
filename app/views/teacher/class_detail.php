@@ -1,10 +1,10 @@
-<?php require APPROOT . '/views/common/header.php'; ?>
-        <h1><center>
-        <?php   
-            echo "Class : ".$data['class_id']."<br>";        
-        ?>
-        </center></h1>
-    <div id="clock"></div>
+<?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul>
+<style>
+    h2{ margin-left: 25%;    }
+</style>        
+        <div style="padding:20px; margin-top:30px;">
+            <h2>Class : <?php echo $data['class_id'];    ?></h2>
+        </div>
 
 <?php    /*table*/
     echo"<table>";
@@ -14,16 +14,15 @@
             echo "<th width=50%>Name</th>";
             echo "<th width=15%>Sec</th>";
         echo"</tr>";  
-        foreach($data as $sub)
+        foreach($data as $subj )
         {
-            $num_count = 1 ;
+           // print_r($data);
             echo"<tr align = center>";  //data  
-                echo "<td>-</td>";
+                echo "<td>$num_count</td>";
                 echo "<td>-</td>";
                 echo "<td align=left>-</td>";
                 echo "<td>"."</td>";
             echo"</tr>";
-            $num_count++;
         }
     echo"</table>";
 

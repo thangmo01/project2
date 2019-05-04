@@ -36,6 +36,25 @@
     border-radius: 8px;
   }
  
+.buttonblack {
+    background-color: white; 
+    border: 2px solid #555555;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .buttonblack:hover {
+    background-color: #555555;
+    color: white;
+    border-radius: 8px;
+  }
+
   table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -58,8 +77,90 @@
     background-color: #dddddd;
   }
   #clock {
-    color: black;
-    font-size: 40px;
-    text-align: center;
+    color: #C250F2;
+    font-size: 24px;
+    text-align: right;
     font-variant-numeric: tabular-nums;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+  .active {
+    background-color: #4CAF50;
+  }
+  body {margin:0;}
+
+  .message-box{
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    text-align: center;
+  }
+
+  .message-success{
+    color: #155724; 
+    background-color: #d4edda; 
+    border-color: #c3e6cb;
+  }
+
+  .message-danger{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+  }
+
+  .message-primary{
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+  }
+
+  .message-secondary{
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+  }
+
+  .message-warning{
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+  }
+
+  .message-info{
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+  }
+
+  .message-dark{
+    color: #1b1e21;
+    background-color: #d6d8d9;
+    border-color: #c6c8ca;
   }
