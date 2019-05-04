@@ -7,6 +7,7 @@
 
 		public function index() {
 			$this->view('student/index');
+			sessionUnsetMession(student_upload_image);
 		}
 
 		public function profile() {

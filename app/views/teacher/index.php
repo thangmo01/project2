@@ -1,38 +1,34 @@
 <?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul>
-<style>
-    h2{ margin-left: 25%;    }
-</style>
-
 <div style="padding:20px; margin-top:30px;">   
     <h1>Teacher Page</h1>
 </div>
-
-<!--    <?php
-        foreach ($data as $sub) {
-            // print_r($sub);echo '<br>';
-            echo '<a href="' . URLROOT . '/teachers/classDetail/' . $sub['class_id'] . '">' . $sub['class_id'] . '</a>';
-            echo '<br>';
-        }
-    ?>
--->    
 <h2>Class Total : </h2>
 <?php   /*table*/
     echo"<table>";
         echo"<tr align = center>"; //head table
-            echo "<th width=18%>Subject ID</th>";
-            echo "<th width=50%>Subject</th>";
-            echo "<th width=12%>Student</th>";
+            echo "<th width=10%>Subject Code</th>";
+            echo "<th width=15%>Subject Name</th>";
+            echo "<th width=5%>Academic Year</th>";
+            echo "<th width=2%>Semaster</th>";
+            echo "<th width=2%>Section</th>";
+            echo "<th width=2%>Num Checks</th>";
             echo "<th width=20%>Key</th>";
-        echo"</tr>";  
-        foreach($data as $sub )
-        {
-            echo"<tr align = center>";  //data  
-                echo "<td>".$sub['subject_id']."</td>";
-                echo "<td align=left><a href=' " . URLROOT . "/teachers/classDetail/".$sub['subject_name']. " '>".$sub['subject_name']."</td>";
-                echo "<td>".$sub['student_count']."</td>";
-                echo "<td>".$sub['class_key']."</td>";
-            echo"</tr>";
-        }
+            echo "<th width=2%>Edit</th>";
+            echo "<th width=2%>Check</th>";
+        echo"</tr>";
+    foreach($data as $sub){
+        echo"<tr align = center>";  //id subject_code  subject_name academic_year semaster section num_checks secret
+            echo "<td>".$sub->subject_code."</td>";
+            echo "<td>".$sub->subject_name."</td>";
+            echo "<td>".$sub->academic_year."</td>";
+            echo "<td>".$sub->semaster."</td>";
+            echo "<td>".$sub->section."</td>";
+            echo "<td>".$sub->num_checks."</td>";
+            echo "<td>".$sub->secret."</td>";
+            echo "<td align=left><a href=' " . URLROOT . "/teachers/classDetail/".$sub->id. "'>edit</a></td>";
+            echo "<td align=left><a href=' " . URLROOT . "/teachers/classCheck/".$sub->id. "'>check</a></td>";
+        echo"</tr>";
+    }
     echo"</table>";
 ?>
 

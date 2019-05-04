@@ -35,3 +35,7 @@
             echo '</div>';
         }
     }
+
+    function sessionUnsetMession($var) {
+        unset($_SESSION[$var]);
+    }

@@ -2,36 +2,11 @@
     class Teachers extends Controller {
         public function __construct() {
             checkLoggedIn('teacher');
+            $this->teacher_model = $this->model('Teacher');
         }
         
         public function index() {
-            $nbsp = "&nbsp";
-            $data = [
-                '1' => [
-                    'subject_name' => 'Operating'.$nbsp.'Systems',
-                    'subject_id' => '129',
-                    'student_count' => 40,
-                    'class_id' => 1,
-                    'section' => 2,
-                    'class_key' => 'keyOS'
-                ],
-                '2' => [
-                    'subject_name' => 'Data'.$nbsp.'Communication'.$nbsp.'And'.$nbsp.'Computer'.$nbsp.'networks',
-                    'subject_id' => '127',
-                    'student_count' => 39,
-                    'class_id' => 2,
-                    'section' => 1,
-                    'class_key' => 'keyData Com'
-                ],
-                '3' => [
-                    'subject_name' => 'Telecommunication'.$nbsp.'Systems',
-                    'subject_id' => '128',
-                    'student_count' => 41,
-                    'class_id' => 3,
-                    'section' => 1,
-                    'class_key' => 'KeyTelecom'
-                ]
-            ];
+            $data = $this->teacher_model->getClassList($_SESSION[user_id]);
             $this->view('teacher/index', $data);
         }
 
@@ -43,5 +18,18 @@
             //    'class_key' => $class_key
             ];
             $this->view('teacher/class_detail', $data);
+        }
+
+        public function classCheck($class_id) {
+            $this->view('teacher/class_check');
+        }
+
+        public function faceIdentify() {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $res = face_api_face_identify($_POST['class_id'], $_POST['image_blob']);
+                echo $res;
+            } else {
+                redirect('teacher/index');
+            }
         }
     }
