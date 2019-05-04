@@ -1,4 +1,5 @@
-<?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul>
+<?php require APPROOT . '/views/common/header.php'; ?>
+<div id="clock"></div></ul>
 <div style="padding:20px; margin-top:30px;">   
 <h1>student</h1>
 </div>  
@@ -11,11 +12,14 @@
         <input type="file" name="profile_image" id="profile_image"><br>
         <input type="submit" value="SUBMIT">
     </form>
-    <h4 style="color: green"><?php echo isset($data['message']) ? $data['message'] : '';?></h4>
-    <h5 style="color: red"><?php echo isset($data['error']) ? $data['error'] : '';?></h5>
-    <?php if(isset($data['result'])) print_r($data['result']);?>
-
-    <script>        /* clock */
+    <div>
+        <h4 style="color: green"><?php echo isset($data['message']) ? $data['message'] : '';?></h4>
+        <h5 style="color: red"><?php echo isset($data['error']) ? $data['error'] : '';?></h5>
+        <?php if(isset($data['result'])) print_r($data['result']);?>
+    </div>
+    <?php sessionShowMessage(student_upload_image); ?>
+<script>        
+    /* clock */
     function showTime() 
     {
         var date = new Date();

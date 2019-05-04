@@ -24,6 +24,8 @@
             }
 
             $this->params = $url ? array_values($url) : [];
+            // print_r($this->params);
+            // die('__');
             //https://www.php.net/manual/en/function.array-values.php
             call_user_func_array([$this->current_controller, $this->current_method], $this->params);
             //https://www.php.net/manual/en/function.call-user-func-array.php
