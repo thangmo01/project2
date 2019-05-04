@@ -25,7 +25,7 @@
     <ul>
         <li><a href="<?php echo URLROOT;?>" class="buttonblue" >Home</a></li>
         <li><a href="<?php echo URLROOT . '/pages/logout';?>" class="buttonblue" >Logout</a></li>
-    <ul>
+    
     <?php else : 
         $authUrl = getGClient()->createAuthUrl();
         echo '<ul>';
@@ -34,4 +34,4 @@
         echo '<ul>';
     ?>
     <?php endif; ?>
-</div>
+

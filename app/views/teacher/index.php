@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul>
+<?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul></div>
 <div style="padding:20px; margin-top:30px;">   
     <h1>Teacher Page</h1>
 </div>
