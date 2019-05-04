@@ -11,6 +11,7 @@ class Display_Table extends Controller
     {
         $student_id = $_SESSION['user_id'];
         $subject_count = $this->create_model->Count_Subject($student_id);
+        echo $subject_count;
     }
 
 }
