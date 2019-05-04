@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/common/header.php'; ?>
 <li><a href="<?php echo URLROOT . '/students/profile';?>" class="buttonblue">Profile</a></li>
+<li><a href="<?php echo URLROOT . '/students/register';?>" class="buttonblue">Joinclass</a></li>
 <div id="clock"></div></ul>    </div>
 <div style="padding:20px; margin-top:30px;">
 <h1>student</h1>
