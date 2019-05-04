@@ -4,6 +4,7 @@
 </div>
 
 <h2 style="margin-left:10%;">Class Total : </h2>
+<a href="#" class="buttonblack" style="margin-left:10%; margin-top:8px; margin-bottom:20px;" >Create New Class</a>
 <?php   /*table*/
 //print_r($data);
     echo"<table>";
