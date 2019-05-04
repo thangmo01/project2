@@ -16,16 +16,13 @@
         echo"</tr>";  
         foreach($data as $subj )
         {
-            print_r($data);
-            $num_count = 1 ;
-            if($num_count<= $subj['student_count']){
+           // print_r($data);
             echo"<tr align = center>";  //data  
                 echo "<td>$num_count</td>";
                 echo "<td>-</td>";
                 echo "<td align=left>-</td>";
                 echo "<td>"."</td>";
             echo"</tr>";
-            $num_count++;}
         }
     echo"</table>";
 
