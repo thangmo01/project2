@@ -1,6 +1,11 @@
 <?php 
-    function s3UploadStudentImage($tmp_file_path, $tmp_file_name) {
-        $bucket_name = 'project2-face-recognition.bucket02';
+    function s3UploadStudentImage($tmp_name, $extension) {
+        // Temp details
+        $name = md5(uniqid());
+        $tmp_file_name = "{$name}.{$extension}"; 
+        $tmp_file_path = "img/{$tmp_file_name}";
+        move_uploaded_file($tmp_name, $tmp_file_path);
+
         // Connect to AWS
         try {
             $s3 = new Aws\S3\S3Client(
@@ -18,9 +23,10 @@
         }
 
         // Add it to S3
+        $bucket_name = 'project2-face-recognition.bucket02';
+        $key = "image/student/{$tmp_file_name}";
         try {
             // Uploaded:
-            $key = "image/student/{$tmp_file_name}";
             $result = $s3->putObject(
                 array(
                     'Bucket'=> $bucket_name,
@@ -40,5 +46,7 @@
             'image_link' => $result['ObjectURL'],
             'image_key' => $key
         ];
+        unlink($tmp_file_path);
+
         return $data;
     }
