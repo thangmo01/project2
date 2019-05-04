@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/common/header.php'; ?>
-<div id="clock"></div></ul>
+<div id="clock"></div></ul></div>
 <div style="padding:20px; margin-top:30px;">   
 <h1>student</h1>
 </div>  

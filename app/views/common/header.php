@@ -32,6 +32,7 @@
         echo    '<li><a href="' . URLROOT . '" class="buttonblue">Home</a></li>';
         echo    '<li><a href="' . filter_var($authUrl, FILTER_SANITIZE_URL) . '" class="buttonblue">Login</a></li>';
         echo '<ul>';
+        echo'</div>';
     ?>
     <?php endif; ?>
 
