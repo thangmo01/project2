@@ -1,10 +1,13 @@
-<?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul></div>
+<?php require APPROOT . '/views/common/header.php'; ?>
+<li><a href="<?php echo URLROOT . '/teachers/class_detail';?>" class="buttonblue">Detail</a></li>
+<li><a href="<?php echo URLROOT . '/teachers/class_check';?>" class="buttonblue">Check</a></li>
+<div id="clock"></div></ul></div>
 <div style="padding:20px; margin-top:30px;">   
     <h1>Teacher Page</h1>
 </div>
 
 <h2 style="margin-left:10%;">Class Total : </h2>
-<a href="#" class="buttonblack" style="margin-left:10%; margin-top:8px; margin-bottom:20px;" >Create New Class</a>
+<a href="<?php echo URLROOT . '/teachers/class_create';?>" class="buttonblack" style="margin-left:10%; margin-top:8px; margin-bottom:20px;" >Create New Class</a>
 <?php   /*table*/
 //print_r($data);
     echo"<table>";
