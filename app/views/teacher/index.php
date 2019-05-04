@@ -16,7 +16,7 @@
     ?>
 -->    
 <h2>Class Total : </h2>
-<?php   /*table*/
+<?php   /*table*/print_r($data);
     echo"<table>";
         echo"<tr align = center>"; //head table
             echo "<th width=18%>Subject ID</th>";

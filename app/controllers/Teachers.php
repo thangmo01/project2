@@ -37,11 +37,7 @@
 
         public function classDetail($class_id) {
             $data = [
-                'class_id' => $class_id, 
-              //  'subject_name' => $subject_name, 
-           //     'student_count' => $student_count,
-            //    'class_key' => $class_key
-            ];
+                'class_id'=> $class_id];
             $this->view('teacher/class_detail', $data);
         }
     }
