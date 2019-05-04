@@ -1,7 +1,7 @@
 <?php
 	class Students extends Controller {
 		public function __construct() {
-			// checkLoggedIn('student');
+			checkLoggedIn('student');
 			$this->student_model = $this->model('Student');
 			$this->data = [];
 		}

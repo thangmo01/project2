@@ -1,7 +1,7 @@
 <?php
     class Teachers extends Controller {
         public function __construct() {
-            // checkLoggedIn('teacher');
+            checkLoggedIn('teacher');
         }
         
         public function index() {

@@ -1,10 +1,7 @@
 <?php
 class Pages extends Controller
 {
-    private $data = [
-        'title' => 'Project2',
-        'description' => '555'
-    ];
+    private $data = [];
 
     public function __construct()
     {
@@ -22,7 +19,7 @@ class Pages extends Controller
             $last_name = $user['family_name'];
             $outh_uid = $user['id'];
             if(!isKmitlEmail($email)) {
-                $this->data['error'] = 'ใช้ e-mail สถาบัน';
+                $this->data['email_error'] = 'ใช้ e-mail สถาบัน';
                 $this->view('pages/index', $this->data);
             }
             else {
@@ -71,10 +68,12 @@ class Pages extends Controller
         unset($_SESSION[user_id]);
         unset($_SESSION[user_email]);
         unset($_SESSION[user_type]);
-
         unset($_SESSION[student_id]);
-
         session_destroy();
+
+        $gClient = getGClient();
+        $gClient->revokeToken();
+
         redirect('');
     }
 }
