@@ -2,20 +2,21 @@
 <div style="padding:20px; margin-top:30px;">   
     <h1>Teacher Page</h1>
 </div>
+
 <h2>Class Total : </h2>
 <?php   /*table*/
 //print_r($data);
     echo"<table>";
         echo"<tr align = center>"; //head table
-            echo "<th width=10%>Subject Code</th>";
-            echo "<th width=15%>Subject Name</th>";
-            echo "<th width=5%>Academic Year</th>";
-            echo "<th width=2%>Semaster</th>";
-            echo "<th width=2%>Section</th>";
-            echo "<th width=2%>Num Checks</th>";
-            echo "<th width=20%>Key</th>";
+            echo "<th width=10%>Subject ID</th>";
+            echo "<th width=35%>Subject Name</th>";
+            echo "<th width=3%>Academic Year</th>";
+            echo "<th width=3%>Semaster</th>";
+            echo "<th width=2%>Sec</th>";
+            echo "<th width=5%>Num Checks</th>";
+            echo "<th width=37%>Key</th>";
             echo "<th width=2%>Edit</th>";
-            echo "<th width=2%>Check</th>";
+            echo "<th width=3%>Check</th>";
         echo"</tr>";
     foreach($data as $sub){
         echo"<tr align = center>";  //id subject_code  subject_name academic_year semaster section num_checks secret
