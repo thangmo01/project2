@@ -20,7 +20,7 @@
     <?php if(isLoggedIn()) : ?>
         <?php if(userType() == 'student'):?>
             <a href="<?php echo URLROOT . '/students/profile';?>" class="w3-bar-item w3-button w3-hover-black">Profile</a>
-            <a href="<?php echo URLROOT . '/pages/joinclass';?>" class="w3-bar-item w3-button w3-hover-black">Joinclass</a>
+            <a href="<?php echo URLROOT . '/students/joinclass';?>" class="w3-bar-item w3-button w3-hover-black">Joinclass</a>
         <?php endif;?>
         <a href="<?php echo URLROOT . '/pages/logout';?>" class="w3-bar-item w3-button w3-right w3-hover-black">Logout</a>
     <?php else :

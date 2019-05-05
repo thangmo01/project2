@@ -12,6 +12,7 @@
 
     define('student_id', 'student_id');
     define('student_upload_image', 'student_upload_image');
+    define('student_join_class', 'student_join_class');
 
 
     function sessionSetMessage($var, $messge = '', $type = 'success') {

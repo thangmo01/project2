@@ -15,9 +15,38 @@
 			$data = [
 				'name' => $_SESSION[user_name],
 				'student_id' => $_SESSION[student_id],
-				'image_link' => $profile->image_link
+				'image_link' => empty($profile->image_link) ? URLROOT . '/img/profile.jpg' : $profile->image_link
 			];
 			$this->view('student/profile', $data);
+		}
+
+		public function joinclass() {
+			if($_SERVER['REQUEST_METHOD'] == 'POST'){
+				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+		
+				$data =[
+				  'secret' => trim($_POST['secret'])
+				];
+
+				if(empty($data['secret'])){
+					sessionSetMessage(student_join_class, 'Pleae enter key', 'danger');
+				}
+				else if(!$this->student_model->hasImageProfile($_SESSION[user_id])) {
+					sessionSetMessage(student_join_class, 'Upload image profile.', 'danger');
+				}
+				else if(!$this->student_model->checkKey($_POST['secret'])) {
+					sessionSetMessage(student_join_class, 'KEY', 'danger');
+				}
+				else {
+					$this->student_model->classRegis($_SESSION['user_id'], $_POST['secret']);
+					sessionSetMessage(student_join_class, 'Done');
+				}
+
+				$this->view('student/joinclass', $data);
+			}
+			else {
+				$this->view('student/joinclass');
+			}
 		}
 
 		public function uploadImage() {
