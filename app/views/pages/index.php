@@ -15,7 +15,7 @@ body, html {
     <p>Project2 is our web project <br>that we made in this year 2019.<br></p>
     <hr>
     <h1><strong> Why it have to be project2?</strong></h2>
-    <p>Cause Project1 doesn't have "INOVATION"<br>So it vanished like Thanos snap his finger to it.</p>
+    <p>Cause Project1 doesn't have "INNOVATION"<br>So it vanished like Thanos snap his finger </p>
   </div>
 </div>
 <?php require APPROOT . '/views/common/footer.php'; ?>
