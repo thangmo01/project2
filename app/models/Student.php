@@ -42,9 +42,19 @@
             $this->db->query('SELECT id FROM classes WHERE secret = :key');
             $this->db->bind(':key',$key);
             $class_id = $this->db->fetchOne()->id;
+
+            $this->db->query("SELECT * FROM class_students WHERE class_id = :class_id AND user_student_id = :user_id");
+            $this->db->bind(':class_id',$class_id);
+            $this->db->bind(':user_id',$user_id);
+            $this->db->execute();
+            if($this->db->rowCount() > 0) {
+                return false;
+            }
+
             $this->db->query('INSERT INTO class_students(class_id, user_student_id) VALUES (:class_id, :user_id)');
             $this->db->bind(':class_id',$class_id);
             $this->db->bind(':user_id',$user_id);
             $this->db->execute();
+            return true;
         }
     }

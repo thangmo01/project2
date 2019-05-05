@@ -2,9 +2,9 @@
 <style>
     h2{ margin-left: 25%;    }
 </style>        
-        <div style="padding:20px; margin-top:30px;">
-            <h2 style="margin-lefft:10%">Class : <?php echo $data['class_id'];    ?></h2>
-        </div>
+<div style="padding:20px; margin-top:30px;">
+    <h2 style="margin-lefft:10%">Class : <?php echo $data['class_id'];    ?></h2>
+</div>
 
 <?php    /*table*/
     echo"<table>";

@@ -1,8 +1,7 @@
 <?php require APPROOT . '/views/common/header.php'; ?>
 <div class="w3-container">
-    <div class="w3-padding-16" style="display: flex; justify-content: space-between">
+    <div class="w3-padding-16">
         <h2>Class Total : </h2>
-        <a href="<?php echo URLROOT . '/teachers/class_create';?>" class="buttonblack" style="margin-left:10%; margin-top:8px; margin-bottom:20px;" >Create New Class</a>
     </div>
     <div class="w3-responsive">
         <table class="w3-table-all w3-card-4 w3-small" style="margin-left: auto; margin-right: auto">

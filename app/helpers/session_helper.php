@@ -13,6 +13,9 @@
     define('student_id', 'student_id');
     define('student_upload_image', 'student_upload_image');
     define('student_join_class', 'student_join_class');
+    
+    define('teacher_create_class', 'teacher_create_class');
+    define('teacher_create_subject', 'teacher_create_subject');
 
 
     function sessionSetMessage($var, $messge = '', $type = 'success') {

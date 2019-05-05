@@ -1,5 +1,9 @@
 <?php
     class Teacher {
+        public function __construct() {
+            $this->db = new Database();
+        }
+        
         public function getClassList($user_id) {
             $db = new Database();
             $db->query('SELECT classes.id, subjects.subject_code, subjects.subject_name, 
@@ -16,5 +20,79 @@
             ');
             $db->bind(':user_id', $user_id);
             return $db->fetchAll();
+        }
+
+        public function createClassDetail() {
+            $db = new Database();
+            $db->query('SELECT id, subject_name, subject_code FROM subjects');
+            $subject_list = $db->fetchAll();
+                        
+            $db->query('SELECT id, academic_year, semaster FROM semasters');
+            $semaster_list = $db->fetchAll();
+
+            return [
+                'subject_list' => $subject_list,
+                'semaster_list' => $semaster_list
+            ];
+        }
+
+        public function createClass($teach_id, $subject_id, $semaster_id, $section) {
+            $secret = $this->keygenerate();
+            $this->db->query('INSERT INTO classes (subject_id, semaster_id, section, secret)
+                VALUES (:subject_id, :semaster_id, :section, :secret)
+            ');
+            $this->db->bind(':subject_id', $subject_id);
+            $this->db->bind(':semaster_id', $semaster_id);
+            $this->db->bind(':section',$section);
+            $this->db->bind(':secret', $secret);
+            $this->db->execute();
+            $class_id = $this->db->lastInsertId();
+
+            $this->db->query('INSERT INTO class_teachers (class_id, user_teacher_id)
+                VALUES (:class_id, :teach_id)');
+            $this->db->bind(':class_id',$class_id);
+            $this->db->bind(':teach_id',$teach_id);
+            $this->db->execute();
+        }
+
+        public function createSubject($subject_name, $subject_code) {
+            $this->db->query('INSERT INTO subjects (subject_name, subject_code)
+                VALUES (:subject_name, :subject_code)');
+            $this->db->bind(':subject_name',$subject_name);
+            $this->db->bind(':subject_code',$subject_code);
+            $this->db->execute();
+        }
+
+        public function hasSection($subject_id, $section) {
+            $this->db->query('SELECT id FROM classes WHERE subject_id = :subject_id AND section = :section');
+            $this->db->bind(':subject_id',$subject_id);
+            $this->db->bind(':section', $section);
+            $this->db->execute();
+            return $this->db->rowCount() > 0;
+        } 
+
+        public function hasSubjectName($subject_name) {
+            $this->db->query('SELECT id FROM subjects WHERE subject_name = :subject_name');
+            $this->db->bind(':subject_name', $subject_name);
+            $this->db->execute();
+            return $this->db->rowCount() > 0;
+        }
+
+        public function hasSubjectCode($subject_code) {
+            $this->db->query('SELECT id FROM subjects WHERE subject_code = :subject_code');
+            $this->db->bind(':subject_code', $subject_code);
+            $this->db->execute();
+            return $this->db->rowCount() > 0;
+        }
+
+        public function keygenerate() {
+            $key;
+            do{
+                $key = md5(microtime().rand());
+                $this->db->query('SELECT * FROM classes WHERE secret = :key');
+                $this->db->bind(':key',$key);
+                $this->db->execute();
+            }while ($this->db->rowCount() >= 1 );
+            return $key;
         }
     }

@@ -8,9 +8,11 @@
 		public function index() {
 			$this->view('student/index');
 			sessionUnsetMession(student_upload_image);
+			sessionUnsetMession(student_join_class);
 		}
 
 		public function profile() {
+			sessionUnsetMession(student_join_class);
 			$profile = $this->student_model->getProfile($_SESSION[user_id]);
 			$data = [
 				'name' => $_SESSION[user_name],
@@ -21,6 +23,7 @@
 		}
 
 		public function joinclass() {
+			sessionUnsetMession(student_upload_image);
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 		
@@ -38,8 +41,13 @@
 					sessionSetMessage(student_join_class, 'KEY', 'danger');
 				}
 				else {
-					$this->student_model->classRegis($_SESSION['user_id'], $_POST['secret']);
-					sessionSetMessage(student_join_class, 'Done');
+					$result = $this->student_model->classRegis($_SESSION['user_id'], $_POST['secret']);
+					if(!$result) {
+						sessionSetMessage(student_join_class, 'Duplicate', 'danger');
+					}
+					else {
+						sessionSetMessage(student_join_class, 'Done');
+					}
 				}
 
 				$this->view('student/joinclass', $data);
