@@ -2,10 +2,6 @@
   visibility: hidden;
 }
 
-table {
-  border: 0px !important;
-}
-
 .module_content img{
   min-width: 70px;
 }
