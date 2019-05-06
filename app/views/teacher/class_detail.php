@@ -3,7 +3,17 @@
     h2{ margin-left: 25%;    }
 </style>        
 <div style="padding:20px; margin-top:30px;">
-    <h2 style="margin-lefft:10%">Class : <?php echo $data['class_id'];    ?></h2>
+    <h2 style="margin-lefft:10%">Class : 
+    <?php 
+    echo $data['class_id']; 
+    echo ' Subject : ';
+    echo $data['detail']['name'];
+    echo ' Semester : ' ;
+    echo $data['detail']['semester'];
+    echo ' Sec : ';
+    echo $data['detail']['section'];    
+    ?>
+    </h2>
 </div>
 
 <?php    /*table*/
@@ -14,7 +24,7 @@
             echo "<th width=50%>Check No.</th>";
             echo "<th width=15%>Checked at</th>";
         echo"</tr>";  
-        foreach($data['detail'] as $sub )
+        foreach($data['detail']['table'] as $sub )
         {
            // print_r($data);
             echo"<tr align = center>";  //data  
