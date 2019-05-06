@@ -54,9 +54,23 @@
 
         public function classCheck($class_id, $user_student_id, $status) {
             $db = new Database();
+            $db->query('SELECT user_student_id FROM class_students WHERE class_id = :class_id');
+            $db->bind(':class_id', $class_id);
+            $db->execute();
+            if($db->rowCount() < 1) {
+                return 'Nope.';
+            }
+
             $db->query('SELECT num_checks FROM classes WHERE id = :class_id');
             $db->bind(':class_id', $class_id);
             $num = $db->fetchOne()->num_checks + 1;
+
+            $db->query('SELECT user_student_id FROM class_checkes WHERE num = :num');
+            $db->bind(':num', $num);
+            $db->execute();
+            if($db->rowCount() > 0) {
+                return 'Dup.';
+            }
 
             $db->query('INSERT INTO class_checkes (class_id, user_student_id, status, num)
                 VALUES (:class_id, :user_student_id, :status, :num)
@@ -66,6 +80,7 @@
             $db->bind(':status', $status);
             $db->bind(':num', $num);
             $db->execute();
+            return 'Good.';
         }
 
         public function hasStudent($class_id) {
