@@ -54,8 +54,9 @@
 
         public function classCheck($class_id, $user_student_id, $status) {
             $db = new Database();
-            $db->query('SELECT user_student_id FROM class_students WHERE class_id = :class_id');
+            $db->query('SELECT id FROM class_students WHERE class_id = :class_id AND user_student_id = :user_student_id');
             $db->bind(':class_id', $class_id);
+            $db->bind(':user_student_id', $user_student_id);
             $db->execute();
             if($db->rowCount() < 1) {
                 return 'Nope.';
