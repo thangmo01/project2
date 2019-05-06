@@ -6,9 +6,10 @@
 		}
 
 		public function index() {
-			$this->view('student/index');
 			sessionUnsetMession(student_upload_image);
 			sessionUnsetMession(student_join_class);
+			$data = $this->student_model->getClassList($_SESSION[user_id]);
+			$this->view('student/index', $data);
 		}
 
 		public function profile() {
