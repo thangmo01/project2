@@ -65,8 +65,9 @@
             $db->bind(':class_id', $class_id);
             $num = $db->fetchOne()->num_checks + 1;
 
-            $db->query('SELECT user_student_id FROM class_checkes WHERE num = :num');
+            $db->query('SELECT id FROM class_checkes WHERE num = :num AND user_student_id = :user_student_id');
             $db->bind(':num', $num);
+            $db->bind(':user_student_id', $user_student_id);
             $db->execute();
             if($db->rowCount() > 0) {
                 return 'Dup.';
