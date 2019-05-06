@@ -57,8 +57,10 @@
                 $res = face_api_face_identify($_POST['class_id'], $_POST['image_blob']);
                 $res_decode = json_decode($res);
                 if($res_decode->code == 200) {
-                    $user_student_id = $res_decode->result[0];//user_id
+                    $user_student_id = $res_decode->result->user_id;//user_id
                     $this->teacher_model->classCheck($_POST['class_id'], $user_student_id, 'TRUE');
+                    $res_decode->result = $this->teacher_model->getStudentProfile($user_student_id);
+                    $res = json_encode($res_decode);
                 }
                 echo $res;
             } else {

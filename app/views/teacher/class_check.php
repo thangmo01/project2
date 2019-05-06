@@ -59,8 +59,8 @@
                     $("#take-snapshot").show();
                     const facechekcResult = document.getElementById('facecheck-result');
                     if(response.code == 200) {
-                        const { result } = response;
-                        facechekcResult.innerHTML = result[1];
+                        const { student_id, first_name, last_name } = response.result;
+                        facechekcResult.innerHTML = `${student_id} - ${first_name} ${last_name}`;
                     }
                     else if(response.code == 400) {
                         facechekcResult.innerHTML = response.messages;

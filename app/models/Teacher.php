@@ -4,6 +4,18 @@
             $this->db = new Database();
         }
 
+        public function getStudentProfile($user_id) {
+            $db = new Database();
+            $db->query('SELECT user_students.student_id, users.first_name, users.last_name
+                FROM users
+                    JOIN user_students
+                        ON users.id = user_students.user_id
+                WHERE users.id = :user_id
+            ');
+            $db->bind(':user_id', $user_id);
+            return $db->fetchOne();
+        }
+
         public function finishCheck($class_id) {
             $db = new Database();
             $db->query('SELECT num_checks FROM classes WHERE id = :class_id');
