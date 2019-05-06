@@ -8,7 +8,6 @@
         public function index() {
             sessionUnsetMession(teacher_create_class);
             sessionUnsetMession(teacher_create_subject);
-            sessionUnsetMession(teacher_class_check);
             $data = $this->teacher_model->getClassList($_SESSION[user_id]);
             $this->view('teacher/index', $data);
         }
@@ -35,11 +34,12 @@
             if($class_id) {
                 sessionUnsetMession(teacher_create_class);
                 sessionUnsetMession(teacher_create_subject);
+                sessionUnsetMession(teacher_class_check);
                 $data = [
                     'class_id' => $class_id
                 ];
                 if(!$this->teacher_model->hasStudent($class_id)) {
-					sessionSetMessage(teacher_class_check, 'No student', 'info');
+					sessionSetMessage(teacher_class_check, 'No student', 'warning');
                     redirect('teacher/index');
                 }
                 $this->view('teacher/class_check', $data);

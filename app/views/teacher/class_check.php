@@ -1,10 +1,6 @@
 <?php require APPROOT . '/views/common/header.php'; ?>
 <div class="w3-container">
     <h1>Class check</h1>
-    <form action="<?php echo URLROOT . '/teachers/finishCheck';?>" method="post">
-      <input type="text" name="class_id" style="display: none" value="<?php echo $data['class_id'];?>">
-      <input type="submit" value="finish" class="w3-button w3-hover-black w3-dark-grey">
-    </form>
     <form action="<?php echo URLROOT . '/teachers/faceIdentify';?>" method="post" class="facecheck-form">
         <div style="display: flex; justify-content: center; margin-bottom: 20px">
             <div style="margin-right: 10px; border: 1px solid rgba(0, 0, 0, 0.2)">
@@ -20,11 +16,15 @@
             <input id="take-snapshot" type=button value="Take Snapshot" onClick="take_snapshot()" class="w3-button w3-hover-black w3-dark-grey" style="margin-left: auto; margin-right: auto">
         </div>
     </form>
-    <div style="text-align: center">
+    <div class="w3-panel w3-border-top w3-border-bottom" style="text-align: center; min-height: 150px;">
         <h1>Result</h1>
         <h1 id="facecheck-result"></h1>
         <div id="loading">Checking&#8230;</div>
     </div>
+    <form action="<?php echo URLROOT . '/teachers/finishCheck';?>" method="post" style="display: flex; flex-direction: column;">
+      <input type="text" name="class_id" style="display: none" value="<?php echo $data['class_id'];?>">
+      <input type="submit" value="finish" class="w3-button w3-hover-black w3-dark-grey w3-large">
+    </form>
 </div>
 
 <script language="JavaScript">

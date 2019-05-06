@@ -78,6 +78,7 @@
         
         public function getClassList($user_id) {
             $db = new Database();
+            
             $db->query('SELECT classes.id, subjects.subject_code, subjects.subject_name, 
                 semasters.academic_year, semasters.semaster, classes.section, 
                 classes.num_checks, classes.secret
@@ -91,7 +92,14 @@
                 WHERE user_teacher_id = :user_id
             ');
             $db->bind(':user_id', $user_id);
-            return $db->fetchAll();
+            $classes = $db->fetchAll();
+            foreach ($classes as $key => $class) {
+                $db->query('SELECT user_student_id FROM class_students WHERE class_id = :class_id');
+                $db->bind(':class_id', $class->id);
+                $db->execute();
+                $classes[$key]->students = $db->rowCount();;
+            }
+            return $classes;
         }
 
         public function createClassDetail() {
