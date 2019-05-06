@@ -1,52 +1,32 @@
-<?php require APPROOT . '/views/common/header.php'; ?><div id="clock"></div></ul>
-<style>
-    h2{ margin-left: 25%;    }
-</style>        
-<div style="padding:20px; margin-top:30px;">
-    <h2 style="margin-lefft:10%">Class : <?php echo $data['class_id'];    ?></h2>
+<?php require APPROOT . '/views/common/header.php'; ?>
+<div class="w3-container">
+    <?php sessionShowMessage(teacher_class_check);?>
+<div class="w3-padding-16">
+    <h2>Class : 000000000 Operating Systems </h2>
+    <h2>Academic Year : 2018 <br>Semester : 1 </h2>
 </div>
+    <div class="w3-responsive">
+        <table class="w3-table-all w3-card-4 w3-small" style="margin-left: auto; margin-right: auto; margin-bottom: 20px;">
+            <tr style="text-align: center">
+                <th>Sec</th>
+                <th>Student ID</th>
+                <th>Name F-L</th>
+                <th>Check</th>
 
-<?php    /*table*/
-    echo"<table>";
-        echo"<tr align = center>"; //head table
-            echo "<th width=15%>Order</th>";
-            echo "<th width=20%>Student ID</th>";
-            echo "<th width=50%>Name</th>";
-            echo "<th width=15%>Sec</th>";
-        echo"</tr>";  
+            </tr>
+        <?php 
         foreach($data as $subj )
         {
            // print_r($data);
             echo"<tr align = center>";  //data  
-                echo "<td>$num_count</td>";
                 echo "<td>-</td>";
-                echo "<td align=left>-</td>";
-                echo "<td>"."</td>";
+                echo "<td>-</td>";
+                echo "<td>-</td>";
+                echo "<td>-</td>";
             echo"</tr>";
         }
-    echo"</table>";
-
-?>        
-
-<script>        /* clock */
-    function showTime() 
-    {
-        var date = new Date();
-        var hr = date.getHours();
-        var min = date.getMinutes();
-        var sec = date.getSeconds();   
-        hr = (hr === 0) ? 24 : hr;
-        if (hr > 23) 
-            {   hr = hr - 24;   }
-        hr = (hr < 10) ? "0" + hr : hr;
-        min = (min < 10) ? "0" + min : min;
-        sec = (sec < 10) ? "0" + sec : sec;
-        var time = hr + ":" + min + ":" + sec + " ";
-        var clock = document.querySelector('#clock');
-        clock.innerText = time;
-        setTimeout(showTime, 1000);
-    }
-    showTime();
-</script>
-
+        ?>
+        </table>
+    </div>
+</div>
 <?php require APPROOT . '/views/common/footer.php'; ?>
