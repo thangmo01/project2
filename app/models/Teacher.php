@@ -3,6 +3,66 @@
         public function __construct() {
             $this->db = new Database();
         }
+
+        public function finishCheck($class_id) {
+            $db = new Database();
+            $db->query('SELECT num_checks FROM classes WHERE id = :class_id');
+            $db->bind(':class_id', $class_id);
+            $num_checks = $db->fetchOne()->num_checks + 1;
+
+            $db->query('SELECT user_student_id FROM class_students WHERE class_id = :class_id'); 
+            $db->bind(':class_id', $class_id);
+            $students = $db->fetchAll();
+
+            $db->query('SELECT user_student_id FROM class_checkes WHERE class_id = :class_id AND num = :num_checks'); 
+            $db->bind(':class_id', $class_id);
+            $db->bind(':num_checks', $num_checks);
+            $checked_students = $db->fetchAll();
+
+            foreach ($students as $student) {
+                foreach ($checked_students as $c_student) {
+                    if($student->user_student_id == $c_student->user_student_id) {
+                        continue 2;
+                    }
+                }
+                $db->query('INSERT INTO class_checkes (class_id, user_student_id, status, num)
+                    VALUES (:class_id, :user_student_id, :status, :num)
+                ');
+                $db->bind(':class_id', $class_id);
+                $db->bind(':user_student_id', $student->user_student_id);
+                $db->bind(':status', 'FALSE');
+                $db->bind(':num', $num_checks);
+                $db->execute();
+            }
+            $db->query('UPDATE classes SET num_checks = :num_checks WHERE id = :class_id');
+            $db->bind(':class_id', $class_id);
+            $db->bind(':num_checks', $num_checks);
+            $db->execute();
+        }
+
+        public function classCheck($class_id, $user_student_id, $status) {
+            $db = new Database();
+            $db->query('SELECT num_checks FROM classes WHERE id = :class_id');
+            $db->bind(':class_id', $class_id);
+            $num = $db->fetchOne()->num_checks + 1;
+
+            $db->query('INSERT INTO class_checkes (class_id, user_student_id, status, num)
+                VALUES (:class_id, :user_student_id, :status, :num)
+            ');
+            $db->bind(':class_id', $class_id);
+            $db->bind(':user_student_id', $user_student_id);
+            $db->bind(':status', $status);
+            $db->bind(':num', $num);
+            $db->execute();
+        }
+
+        public function hasStudent($class_id) {
+            $db = new Database();
+            $db->query('SELECT user_student_id FROM class_students WHERE class_id = :class_id');
+            $db->bind(':class_id', $class_id);
+            $db->execute();
+            return $db->rowCount() > 0;
+        }
         
         public function getClassList($user_id) {
             $db = new Database();

@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/common/header.php'; ?>
 <div class="w3-container">
+    <?php sessionShowMessage(teacher_class_check);?>
     <div class="w3-padding-16">
         <h2>Class Total : </h2>
     </div>

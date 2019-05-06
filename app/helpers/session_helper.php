@@ -16,7 +16,7 @@
     
     define('teacher_create_class', 'teacher_create_class');
     define('teacher_create_subject', 'teacher_create_subject');
-
+    define('teacher_class_check', 'teacher_class_check');
 
     function sessionSetMessage($var, $messge = '', $type = 'success') {
         $_SESSION[$var]['message'] = $messge;
@@ -25,16 +25,7 @@
 
     function sessionShowMessage($var) {
         if(isset($_SESSION[$var])) {
-            $color = '';
-            switch ($_SESSION[$var]['type']) {
-                case 'success':
-                    $color = 'message-success';
-                    break;
-                case 'danger':
-                    $color = 'message-danger';
-                    break;
-            }
-            echo '<div class="message-box ' . $color . '">';
+            echo '<div class="message-box message-' . $_SESSION[$var]['type'] . '">';
             echo "<h4>{$_SESSION[$var]['message']}</h4>";
             echo '</div>';
         }

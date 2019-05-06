@@ -4,7 +4,7 @@
     <div class="w3-row w3-padding">
         <div class="w3-col m4 l4" style="display: flex; flex-direction: column; align-items: center">
             <div class="wrap-img">
-                <img class="w3-padding" src="<?php echo $data['image_link'];?>" alt="Person" style="width:100%; min-height: 100px; max-height: 350px; height: auto;">
+                <img id="myimage" class="w3-padding" src="<?php echo $data['image_link'];?>" alt="Person" style="width:100%; min-height: 100px; max-height: 350px; height: auto;">
                 <div id="select"  class="bottom-right">Select</div>
             </div>
             <form  action="<?php echo URLROOT . '/students/uploadImage';?>" method="post" enctype="multipart/form-data">

@@ -67,7 +67,7 @@
 					if(preg_match('/^jpg$|^png$/', $extension)) {
 						// check size < 1MB
 						if($profile_image['size'] < 1000000) {
-							$res = face_api_upload_student_image($profile_image, $_SESSION[user_outh_id]);
+							$res = face_api_upload_student_image($profile_image, $_SESSION[user_outh_id], $_SESSION[user_id]);
 							if($res['code'] == 200) {
 								$result = $res['result'];
 								$this->student_model->updateImage($_SESSION[user_id], $result['image_link'], $result['image_key']);

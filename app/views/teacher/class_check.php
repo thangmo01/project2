@@ -1,19 +1,23 @@
 <?php require APPROOT . '/views/common/header.php'; ?>
-<div>
-    <h1>class check</h1>
+<div class="w3-container">
+    <h1>Class check</h1>
+    <form action="<?php echo URLROOT . '/teachers/finishCheck';?>" method="post">
+      <input type="text" name="class_id" style="display: none" value="<?php echo $data['class_id'];?>">
+      <input type="submit" value="finish" class="w3-button w3-hover-black w3-dark-grey">
+    </form>
     <form action="<?php echo URLROOT . '/teachers/faceIdentify';?>" method="post" class="facecheck-form">
-        <div style="display: flex; justify-content: center">
-            <div style="margin-right: 10px">
+        <div style="display: flex; justify-content: center; margin-bottom: 20px">
+            <div style="margin-right: 10px; border: 1px solid rgba(0, 0, 0, 0.2)">
                 <div id="my_camera"></div>
                 <br/>
                 <input type="hidden" name="image" class="image-tag">
             </div>
-            <div style="min-width: 320px; border: 1px solid #000">
+            <div style="min-width: 320px; border: 1px solid rgba(0, 0, 0, 0.2)">
                 <div id="results"></div>
             </div>
         </div>
         <div style="width: 100%; display: flex; jusify-content: center; align-items: center;">
-            <input id="take-snapshot" type=button value="Take Snapshot" onClick="take_snapshot()" style="margin-left: auto; margin-right: auto">
+            <input id="take-snapshot" type=button value="Take Snapshot" onClick="take_snapshot()" class="w3-button w3-hover-black w3-dark-grey" style="margin-left: auto; margin-right: auto">
         </div>
     </form>
     <div style="text-align: center">
@@ -40,13 +44,11 @@
         Webcam.snap( function(data_uri) {
             $(".image-tag").val(data_uri);
             document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
-
             const url = $(".facecheck-form").attr('action');
             const data = {
                 class_id: 1, 
                 image_blob: data_uri.replace(/^data\:image\/\w+\;base64\,/, '')
             };
-            // console.log(data);
             $.ajax({
                 url: url,
                 type: 'post',

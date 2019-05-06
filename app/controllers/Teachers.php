@@ -8,6 +8,7 @@
         public function index() {
             sessionUnsetMession(teacher_create_class);
             sessionUnsetMession(teacher_create_subject);
+            sessionUnsetMession(teacher_class_check);
             $data = $this->teacher_model->getClassList($_SESSION[user_id]);
             $this->view('teacher/index', $data);
         }
@@ -20,17 +21,45 @@
             $this->view('teacher/class_detail', $data);
         }
 
-        public function classCheck($class_id) {
-            sessionUnsetMession(teacher_create_class);
-            sessionUnsetMession(teacher_create_subject);
-            $this->view('teacher/class_check');
+        public function finishCheck() {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                sessionSetMessage(teacher_class_check, 'Finished');
+                $this->teacher_model->finishCheck($_POST['class_id']);
+                redirect('teacher/index');
+            } else {
+                redirect('teacher/index');
+            }
+        }
+
+        public function classCheck($class_id = false) {
+            if($class_id) {
+                sessionUnsetMession(teacher_create_class);
+                sessionUnsetMession(teacher_create_subject);
+                $data = [
+                    'class_id' => $class_id
+                ];
+                if(!$this->teacher_model->hasStudent($class_id)) {
+					sessionSetMessage(teacher_class_check, 'No student', 'info');
+                    redirect('teacher/index');
+                }
+                $this->view('teacher/class_check', $data);
+            }
+            else {
+                redirect('teacher/index');
+            }
         }
 
         public function faceIdentify() {
             sessionUnsetMession(teacher_create_class);
             sessionUnsetMession(teacher_create_subject);
+            sessionUnsetMession(teacher_class_check);
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $res = face_api_face_identify($_POST['class_id'], $_POST['image_blob']);
+                $res_decode = json_decode($res);
+                if($res_decode->code == 200) {
+                    $user_student_id = $res_decode->result[0];//user_id
+                    $this->teacher_model->classCheck($_POST['class_id'], $user_student_id, 'TRUE');
+                }
                 echo $res;
             } else {
                 redirect('teacher/index');
