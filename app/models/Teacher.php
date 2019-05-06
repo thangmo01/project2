@@ -191,7 +191,18 @@
             ORDER BY num
             ');
             $this->db->bind(':class_id', $class_id);
-            $detail = $this->db->fetchAll();
+            $table = $this->db->fetchAll();
+
+            $this->db->query('SELECT subjects.subject_name, classes.semaster_id, classes.section
+                FROM classes
+                JOIN subjects
+                ON subjects.id = classes.subject_id
+                WHERE classes.id = :class_id
+            ');
+            $this->db->bind(':class_id', $class_id);
+            $detail = [
+                'table' => $table, 'name' => $this->db->fetchOne()->subject_name, 'semester' => $this->db->fetchOne()->semaster_id, 'section' => $this->db->fetchOne()->section
+            ];
             return $detail;
         }
 
