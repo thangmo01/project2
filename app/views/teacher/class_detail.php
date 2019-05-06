@@ -9,19 +9,19 @@
 <?php    /*table*/
     echo"<table>";
         echo"<tr align = center>"; //head table
-            echo "<th width=15%>Order</th>";
-            echo "<th width=20%>Student ID</th>";
-            echo "<th width=50%>Name</th>";
-            echo "<th width=15%>Sec</th>";
+            echo "<th width=15%>ID</th>";
+            echo "<th width=20%>status</th>";
+            echo "<th width=50%>Check No.</th>";
+            echo "<th width=15%>Checked at</th>";
         echo"</tr>";  
-        foreach($data as $subj )
+        foreach($data['detail'] as $sub )
         {
            // print_r($data);
             echo"<tr align = center>";  //data  
-                echo "<td>$num_count</td>";
-                echo "<td>-</td>";
-                echo "<td align=left>-</td>";
-                echo "<td>"."</td>";
+            echo "<td>".$sub->student_id."</td>";
+            echo "<td>".$sub->status."</td>";
+            echo "<td>".$sub->num."</td>";
+            echo "<td>".$sub->checked_at."</td>";
             echo"</tr>";
         }
     echo"</table>";

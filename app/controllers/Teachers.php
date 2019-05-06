@@ -16,7 +16,8 @@
             sessionUnsetMession(teacher_create_class);
             sessionUnsetMession(teacher_create_subject);
             $data = [
-                'class_id'=> $class_id];
+                'class_id' => $class_id, 'detail' => $this->teacher_model->ClassDetails($class_id)
+            ];
             $this->view('teacher/class_detail', $data);
         }
 

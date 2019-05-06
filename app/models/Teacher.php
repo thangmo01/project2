@@ -165,6 +165,21 @@
             return $this->db->rowCount() > 0;
         }
 
+        public function ClassDetails($class_id)
+        {
+            $this->db->query('SELECT class_checkes.user_student_id, class_checkes.status, class_checkes.num,
+            class_checkes.class_id, user_students.student_id, class_checkes.checked_at
+            FROM class_checkes
+                JOIN user_students
+                ON class_checkes.user_student_id = user_students.user_id
+            WHERE class_id = :class_id
+            ORDER BY num
+            ');
+            $this->db->bind(':class_id', $class_id);
+            $detail = $this->db->fetchAll();
+            return $detail;
+        }
+
         public function keygenerate() {
             $key;
             do{
