@@ -59,8 +59,9 @@
                 $res_decode = json_decode($res);
                 if($res_decode->code == 200) {
                     $user_student_id = $res_decode->result->user_id;//user_id
-                    $this->teacher_model->classCheck($_POST['class_id'], $user_student_id, 'TRUE');
+                    $check_res = $this->teacher_model->classCheck($_POST['class_id'], $user_student_id, 'TRUE');
                     $res_decode->result = $this->teacher_model->getStudentProfile($user_student_id);
+                    $res_decode->messages = $check_res;
                     $res = json_encode($res_decode);
                 }
                 echo $res;

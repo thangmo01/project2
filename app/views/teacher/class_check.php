@@ -60,7 +60,7 @@
                     const facechekcResult = document.getElementById('facecheck-result');
                     if(response.code == 200) {
                         const { student_id, first_name, last_name } = response.result;
-                        facechekcResult.innerHTML = `${student_id} - ${first_name} ${last_name}`;
+                        facechekcResult.innerHTML = `${student_id} - ${first_name} ${last_name}<br>${response.messages}`;
                     }
                     else if(response.code == 400) {
                         facechekcResult.innerHTML = response.messages;
