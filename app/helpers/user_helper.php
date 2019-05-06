@@ -34,3 +34,7 @@
             $_SESSION[$key] = $value;
         }
     }
+
+    function userType() {
+        return $_SESSION[user_type];
+    }
