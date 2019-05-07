@@ -29,7 +29,7 @@
                     echo "<td>".$sub->num_checks."</td>";
                     echo "<td>".$sub->secret."</td>";
                     echo "<td>".$sub->students."</td>";
-                    echo "<td><a " . 'class="w3-button w3-khaki"' . "href=' " . URLROOT . "/teachers/classDetail/".$sub->id. "'>detial</a></td>";
+                    echo "<td><a " . 'class="w3-button w3-khaki"' . "href=' " . URLROOT . "/teachers/classDetail/".$sub->id. "'>detail</a></td>";
                     echo "<td><a " . 'class="w3-button w3-indigo"' . "href=' " . URLROOT . "/teachers/classCheck/".$sub->id. "'>check</a></td>";
                 echo"</tr>";
             }
