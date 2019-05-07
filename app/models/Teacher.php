@@ -54,7 +54,7 @@
 
         public function classCheck($class_id, $user_student_id, $status) {
             $db = new Database();
-            $db->query('SELECT id FROM class_students WHERE class_id = :class_id AND user_student_id = :user_student_id');
+            $db->query('SELECT * FROM class_students WHERE class_id = :class_id AND user_student_id = :user_student_id');
             $db->bind(':class_id', $class_id);
             $db->bind(':user_student_id', $user_student_id);
             $db->execute();
@@ -66,9 +66,10 @@
             $db->bind(':class_id', $class_id);
             $num = $db->fetchOne()->num_checks + 1;
 
-            $db->query('SELECT id FROM class_checkes WHERE num = :num AND user_student_id = :user_student_id');
+            $db->query('SELECT id FROM class_checkes WHERE num = :num AND user_student_id = :user_student_id AND class_id = :class_id');
             $db->bind(':num', $num);
             $db->bind(':user_student_id', $user_student_id);
+            $db->bind(':class_id', $class_id);
             $db->execute();
             if($db->rowCount() > 0) {
                 return 'Dup.';
