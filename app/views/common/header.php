@@ -35,7 +35,7 @@
         <a href="<?php echo URLROOT . '/pages/logout';?>" class="w3-bar-item w3-button w3-right w3-hover-black" ><h2>Logout</h2></a>
     <?php else :
         $authUrl = getGClient()->createAuthUrl();
-        echo '<a href="' . filter_var($authUrl, FILTER_SANITIZE_URL) . '" class="w3-bar-item w3-button w3-right w3-hover-black" >Login</a>';
+        echo '<a href="' . filter_var($authUrl, FILTER_SANITIZE_URL) . '" class="w3-bar-item w3-button w3-right w3-hover-black" ><h2>Login</h2></a>';
     ?>
     <?php endif; ?>
     <h3><div id="clock" class="w3-bar-item w3-right"></div></h3>
