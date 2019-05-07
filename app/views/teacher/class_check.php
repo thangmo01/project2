@@ -22,7 +22,7 @@
         <div id="loading">Checking&#8230;</div>
     </div>
     <form action="<?php echo URLROOT . '/teachers/finishCheck';?>" method="post" style="display: flex; flex-direction: column;">
-      <input type="text" name="class_id" style="display: none" value="<?php echo $data['class_id'];?>">
+      <input type="text" id="class_id" name="class_id" style="display: none" value="<?php echo $data['class_id'];?>">
       <input type="submit" value="finish" class="w3-button w3-hover-black w3-dark-grey w3-large">
     </form>
 </div>
@@ -45,8 +45,9 @@
             $(".image-tag").val(data_uri);
             document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
             const url = $(".facecheck-form").attr('action');
+            const class_id = $("#class_id").attr('value');
             const data = {
-                class_id: 1, 
+                class_id: class_id,
                 image_blob: data_uri.replace(/^data\:image\/\w+\;base64\,/, '')
             };
             $.ajax({

@@ -14,7 +14,7 @@ class Mocks extends Controller
             'title' => 'Project2',
             'description' => '555'
         ];
-        $this->view('mocks/index', $data);
+        // $this->view('mocks/index', $data);
         redirect('');
     }
 
@@ -25,6 +25,7 @@ class Mocks extends Controller
 
     public function mockClassStudets() {
         // $this->mockdata_model->mockClassStudets();
+        // die('DONE!');
         redirect('');
     }
 

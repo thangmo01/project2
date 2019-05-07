@@ -72,6 +72,8 @@
 
         public function createClass() {
             sessionUnsetMession(teacher_create_class);
+            sessionUnsetMession(teacher_create_subject);
+            sessionUnsetMession(teacher_class_check);
             $data = $this->teacher_model->createClassDetail();
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
