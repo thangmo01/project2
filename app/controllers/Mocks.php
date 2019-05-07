@@ -15,17 +15,21 @@ class Mocks extends Controller
             'description' => '555'
         ];
         $this->view('mocks/index', $data);
+        redirect('');
     }
 
     public function mockStudents() {
         // $this->mockdata_model->mockStudents();
+        redirect('');
     }
 
     public function mockClassStudets() {
         // $this->mockdata_model->mockClassStudets();
+        redirect('');
     }
 
     public function updateImage() {
         // $this->mockdata_model->updateImage();
+        redirect('');
     }
 }
