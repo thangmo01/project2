@@ -49,14 +49,34 @@ padding: 0 5px;
 </style>
 
 <div class="row">
-  <div class="column">
-    <div class="card">
-      <h3>Operate System</h3>
-      <p>example</p>
-      <p>Link</p>
-    </div>
-  </div>
 
+<?php
+
+foreach($data as $sub )
+        {
+  echo "<div class="."column".">";
+   echo "<div class="."card".">";    
+                echo "Subject : ";
+                echo $sub->subject_name;
+                echo "<br>";
+                echo 'Section : ';
+                echo $sub->section;
+                echo "<br>";
+                echo 'Semester';
+                echo $sub->semester;
+                echo "<br>";
+                echo '';
+                echo $sub->academic_year;
+                echo "<br>";
+                echo $sub->Check;
+                echo "<br>";
+
+        
+      
+    echo "</div>";
+  echo "</div>";
+}?></div>
+<!-- 
   <div class="column">
     <div class="card">
       <h3>Telecom</h3>
@@ -98,5 +118,5 @@ padding: 0 5px;
       <p>Some text</p>
     </div>
   </div>
-</div>
+</div> -->
 <?php require APPROOT . '/views/common/footer.php'; ?>
