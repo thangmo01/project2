@@ -75,8 +75,10 @@
             $data = $this->teacher_model->createClassDetail();
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-		
-				if(empty($_POST['section'])){
+                if(!isset($_POST['subject_id'])) {
+					sessionSetMessage(teacher_create_class, 'Create subject', 'warning');
+                }
+			    else if(empty($_POST['section'])){
 					sessionSetMessage(teacher_create_class, 'Pleae enter section', 'danger');
                 }
 				else if(strlen($_POST['section']) > 3 || !is_int((int)$_POST['section'])) {
