@@ -15,6 +15,7 @@
         public function classDetail($class_id) {
             sessionUnsetMession(teacher_create_class);
             sessionUnsetMession(teacher_create_subject);
+            sessionUnsetMession(teacher_class_check);
             $data = [
                 'class_id' => $class_id, 'detail' => $this->teacher_model->ClassDetails($class_id)
             ];
@@ -102,6 +103,7 @@
 
         public function createSubject() {
             sessionUnsetMession(teacher_create_class);
+            sessionUnsetMession(teacher_class_check);
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
