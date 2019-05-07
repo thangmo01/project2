@@ -13,8 +13,8 @@
             </form>
         </div>
         <div class="w3-col m8 l8">
-            <h2>Name : <?php echo $data['name'];?></h2>
-            <h2>Student ID: <?php echo $data['student_id'];?></h2>
+            <h2 style="font-size:1.5em">Name : <?php echo $data['name'];?></h2>
+            <h2 style="font-size:1.5em">Student ID: <?php echo $data['student_id'];?></h2>
         </div>
     </div>
 </div>

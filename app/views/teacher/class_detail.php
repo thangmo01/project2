@@ -2,7 +2,7 @@
 <div class="w3-container">
     <?php sessionShowMessage(teacher_class_check);?>
     <div class="w3-padding-16">
-        <h2>Class : <?php 
+        <h2 style="font-size:1.5em">Class : <?php 
     echo $data['class_id']; 
     echo ' Subject : ';
     echo $data['detail']['name'];

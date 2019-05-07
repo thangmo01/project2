@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/common/header.php'; ?>
 <?php sessionShowMessage(teacher_create_class) ;?>
-<h2 style="margin-left:25%; margin-top:20px ">Create Class</h2>
+<h2 style="margin-left:25%; margin-top:20px; font-size:1.5em">Create Class</h2>
 <div style="padding:20px 30px 20px 30px; margin-top:20px; margin: auto; border-radius: 5px; background-color: #f2f2f2; min-width:280px; max-width:55%"> 
   <form action="<?php echo URLROOT . '/teachers/createClass' ?>" method="post">
     <label for="subject_id">Subject</label>

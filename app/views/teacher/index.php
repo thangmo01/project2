@@ -2,7 +2,7 @@
 <div class="w3-container">
     <?php sessionShowMessage(teacher_class_check);?>
     <div class="w3-padding-16">
-        <h2>Class Total : </h2>
+        <h2 style="font-size:1.5em">Class Total : </h2>
     </div>
     <div class="w3-responsive">
         <table class="w3-table-all w3-card-4 w3-small" style="margin-left: auto; margin-right: auto; margin-bottom: 20px;">
