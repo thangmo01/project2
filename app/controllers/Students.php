@@ -6,14 +6,14 @@
 		}
 
 		public function index() {
-			sessionUnsetMession(student_upload_image);
-			sessionUnsetMession(student_join_class);
+			sessionUnsetMessage(student_upload_image);
+			sessionUnsetMessage(student_join_class);
 			$data = $this->student_model->getClassList($_SESSION[user_id]);
 			$this->view('student/index', $data);
 		}
 
 		public function profile() {
-			sessionUnsetMession(student_join_class);
+			sessionUnsetMessage(student_join_class);
 			$profile = $this->student_model->getProfile($_SESSION[user_id]);
 			$data = [
 				'name' => $_SESSION[user_name],
@@ -24,7 +24,7 @@
 		}
 
 		public function joinclass() {
-			sessionUnsetMession(student_upload_image);
+			sessionUnsetMessage(student_upload_image);
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 		
@@ -55,6 +55,16 @@
 			}
 			else {
 				$this->view('student/joinclass');
+			}
+		}
+
+		public function class($class_id = false) {
+			if($class_id) {
+				$class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
+				$this->view('students/class');
+			}
+			else {
+				redirect('students/index');
 			}
 		}
 

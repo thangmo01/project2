@@ -6,37 +6,48 @@
         }
         
         public function index() {
-            sessionUnsetMession(teacher_create_class);
-            sessionUnsetMession(teacher_create_subject);
+            sessionUnsetMessage(teacher_create_class);
+            sessionUnsetMessage(teacher_create_subject);
             $data = $this->teacher_model->getClassList($_SESSION[user_id]);
             $this->view('teacher/index', $data);
         }
 
-        public function classDetail($class_id) {
-            sessionUnsetMession(teacher_create_class);
-            sessionUnsetMession(teacher_create_subject);
-            sessionUnsetMession(teacher_class_check);
-            $data = [
-                'class_id' => $class_id, 'detail' => $this->teacher_model->ClassDetails($class_id)
-            ];
-            $this->view('teacher/class_detail', $data);
+        public function class($class_id = false) {
+            if($class_id) {
+                $class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
+                $data = $this->teacher_model->class($class_id);
+                $data['class_id'] = $class_id;
+                $this->view('teacher/class', $data);
+            }
+            else {
+                redirect('teachers/index');
+            }
         }
 
-        public function finishCheck() {
-            if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                sessionSetMessage(teacher_class_check, 'Finished');
-                $this->teacher_model->finishCheck($_POST['class_id']);
-                redirect('teacher/index');
-            } else {
-                redirect('teacher/index');
+        public function classDetail($class_id = false, $num_checks = false) {
+            sessionUnsetMessage(teacher_create_class);
+            sessionUnsetMessage(teacher_create_subject);
+            sessionUnsetMessage(teacher_class_check);
+            if($class_id && $num_checks) {
+                $class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
+                $num_checks = filter_var($num_checks, FILTER_SANITIZE_NUMBER_INT);
+                $data = [
+                    'class_id' => $num_checks, 
+                    'detail' => $this->teacher_model->classDetails($class_id, $num_checks)
+                ];
+                $this->view('teacher/class_detail', $data);
+            }
+            else {
+                redirect('teachers/index');
             }
         }
 
         public function classCheck($class_id = false) {
+            sessionUnsetMessage(teacher_create_class);
+            sessionUnsetMessage(teacher_create_subject);
+            sessionUnsetMessage(teacher_class_check);
             if($class_id) {
-                sessionUnsetMession(teacher_create_class);
-                sessionUnsetMession(teacher_create_subject);
-                sessionUnsetMession(teacher_class_check);
+                $class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
                 $data = [
                     'class_id' => $class_id
                 ];
@@ -52,9 +63,9 @@
         }
 
         public function faceIdentify() {
-            sessionUnsetMession(teacher_create_class);
-            sessionUnsetMession(teacher_create_subject);
-            sessionUnsetMession(teacher_class_check);
+            sessionUnsetMessage(teacher_create_class);
+            sessionUnsetMessage(teacher_create_subject);
+            sessionUnsetMessage(teacher_class_check);
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $res = face_api_face_identify($_POST['class_id'], $_POST['image_blob']);
                 $res_decode = json_decode($res);
@@ -71,10 +82,20 @@
             }
         }
 
+        public function finishCheck() {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                sessionSetMessage(teacher_class_check, 'Finished');
+                $this->teacher_model->finishCheck($_POST['class_id']);
+                redirect('teacher/index');
+            } else {
+                redirect('teacher/index');
+            }
+        }
+
         public function createClass() {
-            sessionUnsetMession(teacher_create_class);
-            sessionUnsetMession(teacher_create_subject);
-            sessionUnsetMession(teacher_class_check);
+            sessionUnsetMessage(teacher_create_class);
+            sessionUnsetMessage(teacher_create_subject);
+            sessionUnsetMessage(teacher_class_check);
             $data = $this->teacher_model->createClassDetail();
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -102,8 +123,8 @@
         }
 
         public function createSubject() {
-            sessionUnsetMession(teacher_create_class);
-            sessionUnsetMession(teacher_class_check);
+            sessionUnsetMessage(teacher_create_class);
+            sessionUnsetMessage(teacher_class_check);
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 

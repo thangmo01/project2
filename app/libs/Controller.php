@@ -19,7 +19,7 @@ class Controller
             require_once '../app/views/' . $view . '.php';
         }
         else {
-            die('View does not exist');
+            redirect('');
         }
     }
 }

@@ -31,6 +31,6 @@
         }
     }
 
-    function sessionUnsetMession($var) {
+    function sessionUnsetMessage($var) {
         unset($_SESSION[$var]);
     }

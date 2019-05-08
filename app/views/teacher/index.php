@@ -19,18 +19,18 @@
                 <th>Check</th>
             </tr>
             <?php
-            foreach($data as $sub){
+            foreach($data as $e){
                 echo"<tr>";
-                    echo "<td>".$sub->subject_code."</td>";
-                    echo "<td>".$sub->subject_name."</td>";
-                    echo "<td>".$sub->academic_year."</td>";
-                    echo "<td>".$sub->semaster."</td>";
-                    echo "<td>".$sub->section."</td>";
-                    echo "<td>".$sub->num_checks."</td>";
-                    echo "<td>".$sub->secret."</td>";
-                    echo "<td>".$sub->students."</td>";
-                    echo "<td><a " . 'class="w3-button w3-khaki"' . "href=' " . URLROOT . "/teachers/classDetail/".$sub->id. "'>detail</a></td>";
-                    echo "<td><a " . 'class="w3-button w3-indigo"' . "href=' " . URLROOT . "/teachers/classCheck/".$sub->id. "'>check</a></td>";
+                    echo "<td>".$e->subject_code."</td>";
+                    echo "<td>".$e->subject_name."</td>";
+                    echo "<td>".$e->academic_year."</td>";
+                    echo "<td>".$e->semaster."</td>";
+                    echo "<td>".$e->section."</td>";
+                    echo "<td>".$e->num_checks."</td>";
+                    echo "<td>".$e->secret."</td>";
+                    echo "<td>".$e->students."</td>";
+                    echo "<td><a " . 'class="w3-button w3-khaki"' . "href=' " . URLROOT . "/teachers/class/".$e->id. "'>detail</a></td>";
+                    echo "<td><a " . 'class="w3-button w3-indigo"' . "href=' " . URLROOT . "/teachers/classCheck/".$e->id. "'>check</a></td>";
                 echo"</tr>";
             }
             ?>

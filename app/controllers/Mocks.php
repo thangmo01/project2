@@ -5,7 +5,8 @@ class Mocks extends Controller
 {
     public function __construct()
     {
-        $this->mockdata_model = $this->model('Mock');
+        // $this->mockdata_model = $this->model('Mock');
+        redirect('');
     }
 
     public function index()

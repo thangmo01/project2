@@ -183,30 +183,71 @@
             return $this->db->rowCount() > 0;
         }
 
-        public function ClassDetails($class_id)
+        public function class($class_id) {
+            $this->db->query('SELECT num, checked_at,
+                COUNT(CASE WHEN status = "TRUE"  THEN 1 ELSE NULL END) AS true_count,
+                COUNT(CASE WHEN status = "FALSE" THEN 1 ELSE NULL END) AS false_count
+                FROM class_checkes
+                WHERE class_id = :class_id
+                GROUP BY num
+            ');
+            $this->db->bind(':class_id', $class_id);
+            $table = $this->db->fetchAll();
+
+            return [
+                'class' => $this->getClassInfo($class_id),
+                'students' => $this->getStudentList($class_id),
+                'table' => $table
+            ];
+        }
+
+        public function classDetails($class_id, $num_checks)
         {
             $this->db->query('SELECT class_checkes.user_student_id, class_checkes.status, class_checkes.num,
             class_checkes.class_id, user_students.student_id, class_checkes.checked_at
             FROM class_checkes
                 JOIN user_students
                 ON class_checkes.user_student_id = user_students.user_id
-            WHERE class_id = :class_id
+            WHERE class_id = :class_id AND num = :num_checks
             ORDER BY num
             ');
             $this->db->bind(':class_id', $class_id);
+            $this->db->bind(':num_checks', $num_checks);
             $table = $this->db->fetchAll();
+            $class = $this->getClassInfo($class_id);
 
-            $this->db->query('SELECT subjects.subject_name, classes.semaster_id, classes.section
+            $detail = [
+                'table' => $table, 
+                'name' => $class->subject_name, 
+                'semester' => $class->semaster, 
+                'section' => $class->section
+            ];
+            return $detail;
+        }
+
+        public function getStudentList($class_id) {
+            $this->db->query('SELECT user_students.student_id, users.first_name, users.last_name, user_students.image_link
+            FROM class_students 
+                JOIN users
+                    ON users.id = class_students.user_student_id
+                JOIN user_students
+                    ON user_students.user_id = class_students.user_student_id
+            WHERE class_id = :class_id');
+            $this->db->bind(':class_id', $class_id);
+            return $this->db->fetchAll();
+        }
+
+        public function getClassInfo($class_id) {
+            $this->db->query('SELECT subjects.subject_name, semasters.semaster, classes.section, num_checks
                 FROM classes
-                JOIN subjects
-                ON subjects.id = classes.subject_id
+                    JOIN subjects
+                        ON subjects.id = classes.subject_id
+                    JOIN semasters
+                        ON semasters.id = classes.semaster_id
                 WHERE classes.id = :class_id
             ');
             $this->db->bind(':class_id', $class_id);
-            $detail = [
-                'table' => $table, 'name' => $this->db->fetchOne()->subject_name, 'semester' => $this->db->fetchOne()->semaster_id, 'section' => $this->db->fetchOne()->section
-            ];
-            return $detail;
+            return $this->db->fetchOne();
         }
 
         public function keygenerate() {
