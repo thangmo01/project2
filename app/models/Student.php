@@ -69,6 +69,7 @@
                 $class_info = $this->db->fetchOne(); 
                 $subject_id = $class_info->subject_id;
                 $semester_id = $class_info->semaster_id;
+                $classes[$key]->class_id = $class->class_id;
                 $classes[$key]->section = $class_info->section;
                 $classes[$key]->num_checks = $class_info->num_checks;
 
@@ -88,5 +89,41 @@
                 $classes[$key]->check = $this->db->rowCount();
             }
             return $classes;
+        }
+
+        public function getCheckList($class_id, $user_student_id) {
+            $this->db->query('SELECT status, num, checked_at
+                FROM class_checkes
+                WHERE class_id = :class_id AND user_student_id = :user_student_id
+                GROUP BY num
+            ');
+            $this->db->bind(':class_id', $class_id);
+            $this->db->bind(':user_student_id', $user_student_id);
+            return $this->db->fetchAll();
+        }
+
+        public function getStudentList($class_id) {
+            $this->db->query('SELECT user_students.student_id, users.first_name, users.last_name
+            FROM class_students 
+                JOIN users
+                    ON users.id = class_students.user_student_id
+                JOIN user_students
+                    ON user_students.user_id = class_students.user_student_id
+            WHERE class_id = :class_id');
+            $this->db->bind(':class_id', $class_id);
+            return $this->db->fetchAll();
+        }
+
+        public function getClassInfo($class_id) {
+            $this->db->query('SELECT subjects.subject_name, semasters.semaster, classes.section, num_checks
+                FROM classes
+                    JOIN subjects
+                        ON subjects.id = classes.subject_id
+                    JOIN semasters
+                        ON semasters.id = classes.semaster_id
+                WHERE classes.id = :class_id
+            ');
+            $this->db->bind(':class_id', $class_id);
+            return $this->db->fetchOne();
         }
     }

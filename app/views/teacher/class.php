@@ -36,7 +36,7 @@
     </div>
     <div class="w3-responsive">
         <h2 style="font-size:1.5em">
-            Check
+            Check : <?php echo count($data['checks']);?>
         </h2>
         <table class="w3-table-all w3-card-4 w3-small" style="margin-left: auto; margin-right: auto; margin-bottom: 20px;">
             <tr style="text-align: center">
@@ -47,7 +47,7 @@
                 <th>Detail</th>
             </tr>
             <?php
-            foreach($data['table'] as $e )
+            foreach($data['checks'] as $e )
             {
                 echo"<tr>";
                     echo"<tr align = center>";

@@ -54,28 +54,33 @@ padding: 0 5px;
 </style>
 <div class="w3-container">
   <?php if(!empty($data)):?>
+  <h2 style="font-size:1.5em">
+    Class: <?php echo count($data);?>
+  </h2>
   <div class="row">
     <?php
     foreach($data as $sub ){
-      echo "<div class="."column".">";
-        echo "<div class="."card".">";    
-        echo "Subject : ";
-        echo $sub->subject_name;
-        echo "<br>";
-        echo 'Section : ';
-        echo $sub->section;
-        echo "<br>";
-        echo 'Semester: ';
-        echo $sub->semester;
-        echo "<br>";
-        echo 'Academic year: ';
-        echo $sub->academic_year;
-        echo "<br>";
-        echo 'Check: ';
-        echo $sub->check . '/' . $sub->num_checks;
-        echo "<br>";
+      echo '<a href="'.URLROOT.'/students/class/'.$sub->class_id.'">';
+        echo "<div class="."column".">";
+          echo "<div class="."card".">";    
+          echo "Subject : ";
+          echo $sub->subject_name;
+          echo "<br>";
+          echo 'Section : ';
+          echo $sub->section;
+          echo "<br>";
+          echo 'Semester: ';
+          echo $sub->semester;
+          echo "<br>";
+          echo 'Academic year: ';
+          echo $sub->academic_year;
+          echo "<br>";
+          echo 'Check: ';
+          echo $sub->check . '/' . $sub->num_checks;
+          echo "<br>";
+          echo "</div>";
         echo "</div>";
-      echo "</div>";
+      echo '</a>';
     }
     ?>
   </div>

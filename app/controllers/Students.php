@@ -61,7 +61,12 @@
 		public function class($class_id = false) {
 			if($class_id) {
 				$class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
-				$this->view('students/class');
+				$data = [
+					'class' => $this->student_model->getClassInfo($class_id),
+					'students' => $this->student_model->getStudentList($class_id),
+					'checks' => $this->student_model->getCheckList($class_id, $_SESSION['user_id'])
+				];
+				$this->view('student/class', $data);
 			}
 			else {
 				redirect('students/index');

@@ -197,7 +197,7 @@
             return [
                 'class' => $this->getClassInfo($class_id),
                 'students' => $this->getStudentList($class_id),
-                'table' => $table
+                'checks' => $table
             ];
         }
 
