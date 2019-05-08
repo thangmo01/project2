@@ -67,7 +67,7 @@
 					// check file extension
 					if(preg_match('/^jpg$|^png$/', $extension)) {
 						// check size < 1MB
-						if($profile_image['size'] < 1000000) {
+						if($profile_image['size'] < 2000000) {
 							$res = face_api_upload_student_image($profile_image, $_SESSION[user_outh_id], $_SESSION[user_id]);
 							if($res['code'] == 200) {
 								$result = $res['result'];
@@ -79,7 +79,7 @@
 							}
 						}
 						else {
-							sessionSetMessage(student_upload_image, 'The image must be less than 1MB in size.', 'danger');
+							sessionSetMessage(student_upload_image, 'The image must be less than 2MB in size.', 'danger');
 						}
 					}
 					else {
