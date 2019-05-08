@@ -64,29 +64,28 @@
             $this->db->bind(':user_id', $user_id);
             $classes = $this->db->fetchAll();
             foreach ($classes as $key => $class) {
-                $this->db->query('SELECT section FROM classes WHERE id = :class_id');
+                $this->db->query('SELECT subject_id, section, semaster_id, num_checks FROM classes WHERE id = :class_id');
                 $this->db->bind(':class_id', $class->class_id);
-                $classes[$key]->section = $this->db->fetchOne()->section;
-                $this->db->query('SELECT semaster_id FROM classes WHERE id = :class_id');
-                $this->db->bind(':class_id', $class->class_id);
-                $semester_id = $this->db->fetchOne()->semaster_id;
-                $this->db->query('SELECT academic_year FROM semasters WHERE id = :semester_id');
+                $class_info = $this->db->fetchOne(); 
+                $subject_id = $class_info->subject_id;
+                $semester_id = $class_info->semaster_id;
+                $classes[$key]->section = $class_info->section;
+                $classes[$key]->num_checks = $class_info->num_checks;
+
+                $this->db->query('SELECT academic_year, semaster FROM semasters WHERE id = :semester_id');
                 $this->db->bind(':semester_id', $semester_id);
                 $classes[$key]->academic_year = $this->db->fetchOne()->academic_year;
-                $this->db->query('SELECT semaster FROM semasters WHERE id = :semester_id');
-                $this->db->bind(':semester_id', $semester_id);
                 $classes[$key]->semester = $this->db->fetchOne()->semaster;
-                $this->db->query('SELECT subject_id FROM classes WHERE id = :class_id');
-                $this->db->bind(':class_id', $class->class_id);
-                $subject_id = $this->db->fetchOne()->subject_id;
+
                 $this->db->query('SELECT subject_name FROM subjects WHERE id = :subject_id');
                 $this->db->bind(':subject_id', $subject_id);
                 $classes[$key]->subject_name = $this->db->fetchOne()->subject_name;
+
                 $this->db->query('SELECT user_student_id FROM class_checkes WHERE user_student_id = :user_id AND status = "TRUE" AND class_id = :class_id');
                 $this->db->bind(':class_id', $class->class_id);
                 $this->db->bind(':user_id', $user_id);
                 $this->db->execute();
-                $classes[$key]->Check = $this->db->rowCount();
+                $classes[$key]->check = $this->db->rowCount();
             }
             return $classes;
         }

@@ -1,5 +1,4 @@
 <?php require APPROOT . '/views/common/header.php'; ?>
-
 <style>
 * {
   box-sizing: border-box;
@@ -14,6 +13,7 @@ body {
   float: left;
   width: 25%;
   padding: 0 10px;
+  margin: 10px 0 10px 0;
 }
 
 /* Remove extra left and right margins, due to padding */
@@ -45,78 +45,42 @@ padding: 0 5px;
   padding: 16px;
   text-align: center;
   background-color: #f1f1f1;
+  transition: all 300ms;
+  cursor: pointer;
+}
+.card:hover {
+  transform: scale(1.05);
 }
 </style>
-
-<div class="row">
-
-<?php
-
-foreach($data as $sub )
-        {
-  echo "<div class="."column".">";
-   echo "<div class="."card".">";    
-                echo "Subject : ";
-                echo $sub->subject_name;
-                echo "<br>";
-                echo 'Section : ';
-                echo $sub->section;
-                echo "<br>";
-                echo 'Semester';
-                echo $sub->semester;
-                echo "<br>";
-                echo '';
-                echo $sub->academic_year;
-                echo "<br>";
-                echo $sub->Check;
-                echo "<br>";
-
-        
-      
-    echo "</div>";
-  echo "</div>";
-}?></div>
-<!-- 
-  <div class="column">
-    <div class="card">
-      <h3>Telecom</h3>
-      <p>154224518</p>
-      <p>Enter class</p>
-    </div>
+<div class="w3-container">
+  <?php if(!empty($data)):?>
+  <div class="row">
+    <?php
+    foreach($data as $sub ){
+      echo "<div class="."column".">";
+        echo "<div class="."card".">";    
+        echo "Subject : ";
+        echo $sub->subject_name;
+        echo "<br>";
+        echo 'Section : ';
+        echo $sub->section;
+        echo "<br>";
+        echo 'Semester: ';
+        echo $sub->semester;
+        echo "<br>";
+        echo 'Academic year: ';
+        echo $sub->academic_year;
+        echo "<br>";
+        echo 'Check: ';
+        echo $sub->check . '/' . $sub->num_checks;
+        echo "<br>";
+        echo "</div>";
+      echo "</div>";
+    }
+    ?>
   </div>
+  <?php else:?>
+  <h1>Join class ^</h1>
+  <?php endif;?>
 </div>
-
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <h3>FoundationEng</h3>
-      <p>Some text</p>
-      <p>Some text</p>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <h3>SAD</h3>
-      <p>Some text</p>
-      <p>Some text</p>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <h3>Webtech</h3>
-      <p>Some text</p>
-      <p>Some text</p>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <h3>Datacom</h3>
-      <p>Some text</p>
-      <p>Some text</p>
-    </div>
-  </div>
-</div> -->
 <?php require APPROOT . '/views/common/footer.php'; ?>
