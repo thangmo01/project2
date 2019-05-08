@@ -13,8 +13,8 @@
         }
 
         public function class($class_id = false) {
+            $class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
             if($class_id) {
-                $class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
                 $data = $this->teacher_model->class($class_id);
                 $data['class_id'] = $class_id;
                 $this->view('teacher/class', $data);
@@ -28,9 +28,10 @@
             sessionUnsetMessage(teacher_create_class);
             sessionUnsetMessage(teacher_create_subject);
             sessionUnsetMessage(teacher_class_check);
+            $class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
+            $num_checks = filter_var($num_checks, FILTER_SANITIZE_NUMBER_INT);
+
             if($class_id && $num_checks) {
-                $class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
-                $num_checks = filter_var($num_checks, FILTER_SANITIZE_NUMBER_INT);
                 $data = [
                     'class_id' => $num_checks, 
                     'detail' => $this->teacher_model->classDetails($class_id, $num_checks)
@@ -46,8 +47,8 @@
             sessionUnsetMessage(teacher_create_class);
             sessionUnsetMessage(teacher_create_subject);
             sessionUnsetMessage(teacher_class_check);
+            $class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
             if($class_id) {
-                $class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
                 $data = [
                     'class_id' => $class_id
                 ];

@@ -59,8 +59,8 @@
 		}
 
 		public function class($class_id = false) {
+			$class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
 			if($class_id) {
-				$class_id = filter_var($class_id, FILTER_SANITIZE_NUMBER_INT);
 				$data = [
 					'class' => $this->student_model->getClassInfo($class_id),
 					'students' => $this->student_model->getStudentList($class_id),
