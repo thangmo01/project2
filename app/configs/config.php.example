@@ -1,0 +1,26 @@
+<?php
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', 'project2');
+
+    define('APPROOT', dirname(dirname(__FILE__)));
+    define('VENDORROOT', dirname(dirname(dirname(__FILE__))) . '\vendor' );
+    define('URLROOT', 'http://localhost/project2');
+    define('SITENAME', 'Project2');
+
+    // AWS credentials
+    define('AWS_ACCESS_KEY_ID', 'example');
+    define('AWS_SECRET_ACCESS_KEY', 'example');
+    // AWS S3
+    define('S3_REGION', 'ap-northeast-1');
+
+    // OAuth client
+    define('GOOGLE_CLIENT_ID', 'example.apps.googleusercontent.com');
+    define('GOOGLE_CLIENT_SECRET', 'example');
+    define('GOOGLE_REDIRECT_URL', URLROOT . '/example');
+
+    // Face API
+    define('FACE_API_HOST', 'localhost');
+    define('FACE_API_UPLOAD_STUDENT_IMAGE', '/upload-student-image');
+    define('FACE_API_FACE_IDENTIFY', '/face-identify');
