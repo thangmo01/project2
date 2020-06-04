@@ -15,3 +15,9 @@
     * AWS S3 สำหรับเก็บรูปภาพ
     * AWS rekognition สำหรับการคัดแยกในหน้า
     * AWS EC2 สำหรับรัน service
+
+#### contributors
+* lookharm: https://github.com/thangmo01
+* Failmaker: https://github.com/Failmaker
+* PK: https://github.com/PK9856
+* bigguu: https://github.com/bigguu
